@@ -1,0 +1,11 @@
+Statusi po ID-jih
+
+Uporabnik
+1 = admin
+2 = prodajalec
+3 = stranka
+
+Narocilo
+1 = oddano
+2 = potrjeno
+3 = stornirano
