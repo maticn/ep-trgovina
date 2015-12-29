@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="93c01a4b-4400-4ce5-8930-87a51008b740" name="Default" comment="PostavkaNarocilaDB added.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/NarociloDBTest.php" />
+    <list default="true" id="93c01a4b-4400-4ce5-8930-87a51008b740" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model/IzdelekDB.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model/SlikaIzdelkaDB.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/IzdelekDBTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/PostavkaNarociloDBTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/SlikaIzdelekDBTest.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/NarociloDB.php" afterPath="$PROJECT_DIR$/model/NarociloDB.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/PostavkaNarocilaDB.php" afterPath="$PROJECT_DIR$/model/PostavkaNarocilaDB.php" />
     </list>
     <ignored path="trgovina.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,48 +39,6 @@
         <option name="myItemId" value="MySQL - mydb@localhost" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="Uporabnik" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - mydb@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - mydb@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="Posta" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - mydb@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="Narocilo" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
     </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -84,67 +46,7 @@
     <favorites_list name="trgovina" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NarociloDB.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/model/NarociloDB.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38297874">
-              <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
-              <folding>
-                <marker date="1451412054895" expanded="true" signature="326:520" placeholder="INSERT INTO Narocilo... " />
-                <marker date="1451412054895" expanded="true" signature="622:738" placeholder="UPDATE Naroc... " />
-                <marker date="1451412054895" expanded="true" signature="622:763" placeholder="UPDATE Naroc... " />
-                <marker date="1451412054895" expanded="true" signature="622:771" placeholder="UPDATE Naroc... " />
-                <marker date="1451412054895" expanded="true" signature="869:912" placeholder="DELETE FROM " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NarociloDBTest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/NarociloDBTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.333334">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding>
-                <marker date="1451412082055" expanded="true" signature="395:434" placeholder="..." />
-                <marker date="1451412082055" expanded="true" signature="403:432" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mydb.Uporabnik" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/f8104c58/2c3afcab-7b75-4bfb-97b2-a1b0a3c77b34/mydb.Uporabnik">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mydb.Narocilo" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/f8104c58/2c3afcab-7b75-4bfb-97b2-a1b0a3c77b34/mydb.Narocilo">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -157,10 +59,15 @@
         <option value="$PROJECT_DIR$/model/UporabnikDB.php" />
         <option value="$PROJECT_DIR$/test/UporanikDBTest.php" />
         <option value="$PROJECT_DIR$/model/PostavkaNarocila.php" />
-        <option value="$PROJECT_DIR$/model/PostavkaNarocilaDB.php" />
         <option value="dbtable:/f8104c58/2c3afcab-7b75-4bfb-97b2-a1b0a3c77b34/mydb.Uporabnik" />
         <option value="$PROJECT_DIR$/model/NarociloDB.php" />
         <option value="$PROJECT_DIR$/test/NarociloDBTest.php" />
+        <option value="$PROJECT_DIR$/model/PostavkaNarocilaDB.php" />
+        <option value="$PROJECT_DIR$/test/PostavkaNarociloDBTest.php" />
+        <option value="$PROJECT_DIR$/model/IzdelekDB.php" />
+        <option value="$PROJECT_DIR$/test/IzdelekDBTest.php" />
+        <option value="$PROJECT_DIR$/model/SlikaIzdelkaDB.php" />
+        <option value="$PROJECT_DIR$/test/SlikaIzdelekDBTest.php" />
       </list>
     </option>
   </component>
@@ -442,18 +349,24 @@
       <option name="project" value="LOCAL" />
       <updated>1451402183919</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="NarociloDB dejla.">
+      <created>1451413433773</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1451413433773</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1600" height="875" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13607189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21116817" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21116817" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -484,7 +397,8 @@
     <MESSAGE value="ER model in SQL skripta." />
     <MESSAGE value="idUporabnik auto increment, NarociloDB 10%." />
     <MESSAGE value="PostavkaNarocilaDB added." />
-    <option name="LAST_COMMIT_MESSAGE" value="PostavkaNarocilaDB added." />
+    <MESSAGE value="NarociloDB dejla." />
+    <option name="LAST_COMMIT_MESSAGE" value="NarociloDB dejla." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -532,18 +446,6 @@
         <state vertical-scroll-proportion="-0.9957447">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/PostavkaNarocilaDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.111111">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <marker date="1451402123490" expanded="true" signature="174:296" placeholder="INSERT INTO PostavkaNarocila... " />
-            <marker date="1451402123490" expanded="true" signature="398:521" placeholder="UPDATE Posta... " />
-            <marker date="1451402123490" expanded="true" signature="619:705" placeholder="DELETE FROM " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -600,14 +502,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/f8104c58/2c3afcab-7b75-4bfb-97b2-a1b0a3c77b34/mydb.Uporabnik">
+    <entry file="file://$PROJECT_DIR$/test/NarociloDBTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7404255">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/NarociloDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.333333">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <marker date="1451412054895" expanded="true" signature="326:520" placeholder="INSERT INTO Narocilo... " />
+            <marker date="1451412054895" expanded="true" signature="622:738" placeholder="UPDATE Naroc... " />
+            <marker date="1451412054895" expanded="true" signature="622:763" placeholder="UPDATE Naroc... " />
+            <marker date="1451412054895" expanded="true" signature="622:771" placeholder="UPDATE Naroc... " />
+            <marker date="1451412054895" expanded="true" signature="869:912" placeholder="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/PostavkaNarociloDBTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71489364">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/IzdelekDBTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6893617">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/IzdelekDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35744682">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding>
+            <marker date="1451415594619" expanded="true" signature="165:267" placeholder="INSERT INTO Izdelek... " />
+            <marker date="1451415594619" expanded="true" signature="369:492" placeholder="UPDATE Izdel... " />
+            <marker date="1451415594619" expanded="true" signature="594:642" placeholder="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/f8104c58/2c3afcab-7b75-4bfb-97b2-a1b0a3c77b34/mydb.Izdelek">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
       <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/PostavkaNarocilaDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17872341">
+          <caret line="10" column="59" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
+          <folding>
+            <marker date="1451414465555" expanded="true" signature="273:396" placeholder="INSERT INTO PostavkaNarocila... " />
+            <marker date="1451414465555" expanded="true" signature="273:397" placeholder="INSERT INTO PostavkaNarocila... " />
+            <marker date="1451414465555" expanded="true" signature="499:622" placeholder="UPDATE Posta... " />
+            <marker date="1451414465555" expanded="true" signature="724:810" placeholder="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/f8104c58/2c3afcab-7b75-4bfb-97b2-a1b0a3c77b34/mydb.SlikaIzdelka">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/SlikaIzdelekDBTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71489364">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/SlikaIzdelkaDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7659575">
+          <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+          <folding>
+            <marker date="1451416196239" expanded="true" signature="170:259" placeholder="INSERT INTO SlikaIzdelka... " />
+            <marker date="1451416196239" expanded="true" signature="361:479" placeholder="UPDATE Slika... " />
+            <marker date="1451416196239" expanded="true" signature="581:644" placeholder="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/f8104c58/2c3afcab-7b75-4bfb-97b2-a1b0a3c77b34/mydb.PostavkaNarocila">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -626,28 +637,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/NarociloDBTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.333334">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <marker date="1451412082055" expanded="true" signature="395:434" placeholder="..." />
-            <marker date="1451412082055" expanded="true" signature="403:432" placeholder="..." />
-          </folding>
+    <entry file="dbDummy://dbtable:/f8104c58/2c3afcab-7b75-4bfb-97b2-a1b0a3c77b34/mydb.Uporabnik">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/NarociloDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38297874">
-          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
-          <folding>
-            <marker date="1451412054895" expanded="true" signature="326:520" placeholder="INSERT INTO Narocilo... " />
-            <marker date="1451412054895" expanded="true" signature="622:738" placeholder="UPDATE Naroc... " />
-            <marker date="1451412054895" expanded="true" signature="622:763" placeholder="UPDATE Naroc... " />
-            <marker date="1451412054895" expanded="true" signature="622:771" placeholder="UPDATE Naroc... " />
-            <marker date="1451412054895" expanded="true" signature="869:912" placeholder="DELETE FROM " />
-          </folding>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
