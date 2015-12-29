@@ -5,12 +5,13 @@ require_once 'model/AbstractDB.php';
 class UporabnikDB extends AbstractDB {
 
     public static function insert(array $params) {
-        $defaultVals = ["naslov"=>""];
+        $defaultVals = ["naslov"=>"","idPosta"=>null];
         $params["aktivno"] = false;
         $params["geslo"] = password_hash($params["geslo"],PASSWORD_BCRYPT);
         $params = array_merge($defaultVals,$params);
-        return parent::modify("INSERT INTO Uporabnik (ime, priimek, email, geslo, idVloga, telefon, naslov, datumRegistracije, aktivno) "
-            . " VALUES (:ime, :priimek, :email, :geslo, :idVloga, :telefon, :naslov, now(), :aktivno)", $params);
+        echo $params["idPosta"];
+        return parent::modify("INSERT INTO Uporabnik (ime, priimek, email, geslo, idVloga, telefon, naslov, idPosta, datumRegistracije, aktivno) "
+            . " VALUES (:ime, :priimek, :email, :geslo, :idVloga, :telefon, :naslov, :idPosta, now(), :aktivno)", $params);
     }
 
     public static function update(array $params) {

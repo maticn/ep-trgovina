@@ -53,7 +53,7 @@ abstract class AbstractDB {
      * Metoda sproži izjemo, če se podani parametri ne ujemajo s parametri 
      * v poizvedbi.
      * 
-     * @param type $sql Poizvedba SQL
+     * @param string $sql Poizvedba SQL
      * @param array $params Parametri poizvedbe
      * @return type Boolean
      */
@@ -121,7 +121,7 @@ abstract class AbstractDB {
         $result = array();
 
         foreach ($sql_params as $key => $value) {
-            if (isset($params_altered[$value])) {
+            if (array_key_exists($value, (array)$params_altered)) {
                 $result[$value] = $params_altered[$value];
             }
         }
