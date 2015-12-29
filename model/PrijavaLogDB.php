@@ -5,10 +5,10 @@ require_once 'model/AbstractDB.php';
 class PrijavaLogDB extends AbstractDB
 {
 
-    public static function insert(array $uporabnikId)
+    public static function insert(array $params)
     {
         return parent::modify("INSERT INTO PrijavaLog (idUporabnik, casPrijave) "
-            . " VALUES (:idUporabnik, now())", ["idUporabnik" => $uporabnikId]);
+            . " VALUES (:idUporabnik, now())", $params);
     }
 
     public static function update(array $params)
