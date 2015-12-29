@@ -1,5 +1,6 @@
 <?php
-require 'model/UporabnikDB.php';
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+require $root.'/model/UporabnikDB.php';
 
 UporabnikDB::insert(
     [

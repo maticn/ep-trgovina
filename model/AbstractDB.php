@@ -1,6 +1,6 @@
 <?php
-
-require_once 'model/DB.php';
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+require_once $root.'/model/DB.php';
 
 abstract class AbstractDB {
 
