@@ -2,7 +2,7 @@
 
 require_once 'model/AbstractDB.php';
 
-class UporabnikDB extends AbstractDB
+class PrijavaLogDB extends AbstractDB
 {
 
     public static function insert(array $uporabnikId)
@@ -17,13 +17,13 @@ class UporabnikDB extends AbstractDB
 
     public static function delete(array $id)
     {
-        return parent::modify("DELETE FROM Uporabnik WHERE idUporabnik = :id", $id);
+        return parent::modify("DELETE FROM PrijavaLog WHERE idPrijavaLog = :id", $id);
     }
 
     public static function get(array $id)
     {
-        $books = parent::query("SELECT ime, priimek, email, geslo, idVloga, telefon, naslov, datumRegistracije, aktivno"
-            . " FROM Uporabnik"
+        $books = parent::query("SELECT idUporabnika,casPrijave"
+            . " FROM PrijavaLog"
             . " WHERE id = :id", $id);
 
         if (count($books) == 1) {
@@ -35,9 +35,9 @@ class UporabnikDB extends AbstractDB
 
     public static function getAll()
     {
-        return parent::query("SELECT ime, priimek, email, geslo, idVloga, telefon, naslov, datumRegistracije, aktivno"
-            . " FROM Uporabnik"
-            . " ORDER BY id ASC");
+        return parent::query("SELECT idPrijavaLog, idUporabnik, casPrijave"
+            . " FROM PrijavaLog"
+            . " ORDER BY idPrijavaLog ASC");
     }
 
 }
