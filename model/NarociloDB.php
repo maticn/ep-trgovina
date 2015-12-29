@@ -5,7 +5,9 @@ require_once 'model/AbstractDB.php';
 class NarociloDB extends AbstractDB {
 
     public static function insert(array $params) {
+        $defaultVals = ["idProdajalca" => null, "datumPotrditve" => null];
         $params["status"] = 1;
+        $params = array_merge($defaultVals, $params);
         return parent::modify("INSERT INTO Narocilo (cenaSkupaj, status, idStranke, datumOddaje, idProdajalca, datumPotrditve) "
             . " VALUES (:cenaSkupaj, :status, :idStranke, now(), :idProdajalca, :datumPotrditve)", $params);
     }
