@@ -16,25 +16,25 @@ class NarociloDB extends AbstractDB {
     }
 
     public static function delete(array $id) {
-        return parent::modify("DELETE FROM Uporabnik WHERE idUporabnik = :id", $id);
+        return parent::modify("DELETE FROM Narocilo WHERE idNarocilo = :id", $id);
     }
 
     public static function get(array $id) {
-        $books = parent::query("SELECT ime, priimek, email, geslo, idVloga, telefon, naslov, datumRegistracije, aktivno"
-            . " FROM Uporabnik"
-            . " WHERE id = :id", $id);
+        $narocila = parent::query("SELECT cenaSkupaj, status, idStranke, datumOddaje, idProdajalca, datumPotrditve"
+            . " FROM Narocilo"
+            . " WHERE idNarocilo = :id", $id);
 
-        if (count($books) == 1) {
-            return $books[0];
+        if (count($narocila) == 1) {
+            return $narocila[0];
         } else {
-            throw new InvalidArgumentException("No such book");
+            throw new InvalidArgumentException("Narocilo ne obstaja.");
         }
     }
 
     public static function getAll() {
-        return parent::query("SELECT ime, priimek, email, geslo, idVloga, telefon, naslov, datumRegistracije, aktivno"
-            . " FROM Uporabnik"
-            . " ORDER BY id ASC");
+        return parent::query("SELECT idNarocilo, cenaSkupaj, status, idStranke, datumOddaje, idProdajalca, datumPotrditve"
+            . " FROM Narocilo"
+            . " ORDER BY idNarocilo ASC");
     }
 
 }
