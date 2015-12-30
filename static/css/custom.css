@@ -1,0 +1,217 @@
+/* Zemljevid na login strani */
+#map-canvas {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 15px;
+    border: 2px solid #fff;
+}
+.map-naslov {
+    font-size: 18px;
+    line-height: 28px;
+    margin: 0 0 15px 0;
+    font-weight: normal;
+    color: #444444;
+    text-transform: none;
+}
+.map-contact {
+    font-size: 18px;
+    line-height: 28px;
+}
+.glyphicon {
+    font-size: 28px;
+}
+
+/* Trenutna lokacija */
+#map {
+    width: 100%;
+    height: 243px;
+    margin-bottom: 20px;
+}
+.obvestilo {
+    width: 180%;
+}
+.navodilaZaPot {
+    width: 100%;
+    height: 500px;
+    border: none;
+}
+
+.minVisina {
+    min-height: 316px;
+}
+
+/* Header in fotter. */
+.navbar {
+    height: 80px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#af5660+0,b20017+100 */
+    background: #af5660; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2FmNTY2MCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNiMjAwMTciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  #af5660 0%, #b20017 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#af5660), color-stop(100%,#b20017)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #af5660 0%,#b20017 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #af5660 0%,#b20017 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #af5660 0%,#b20017 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #af5660 0%,#b20017 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#af5660', endColorstr='#b20017',GradientType=0 ); /* IE6-8 */
+    -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12)
+}
+.panel-footer.noga {
+    height: 55px;
+    box-shadow: 0 0 30px grey;
+}
+
+/* Ikoni za Settings in Logout v headerju naj bosta crni. */
+.nav>li>a {
+    color: black;
+}
+
+#logo {
+    width: 62px;
+    height: 60px;
+    background: url(../../images/logo/logo.png) no-repeat;
+    -webkit-transition: width 1s, height 1s; /* For Safari 3.1 to 6.0 */
+    transition: width 1s, height 1s;
+}
+#logo:hover {
+    width: 148px;
+    height: 60px;
+}
+
+.panel-primary>.panel-heading, .panel-green>.panel-heading, .panel-red>.panel-heading {
+    min-height: 118px;
+}
+
+.desno20 {
+    margin-right: 20px;
+}
+
+.panel-default>.panel-heading.red {
+    color: #b4162c;
+}
+
+.puscica>li {
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/arrow.png") 0 50% no-repeat;
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/29841/arrow.svg") 0 50% no-repeat;
+    list-style-type: none;
+    padding-left: 12px;
+}
+
+@-moz-document url-prefix() {
+    .btn-mozilla {
+        margin-top: 81px;
+    }
+}
+
+.posnamiBelezko {
+    width: 100%;
+    height: 430px;
+    border: 0 !important;
+}
+
+#piskotek {
+    font-size: 14px;
+    display: inline;
+}
+
+.film {
+    width: 100% !important;
+    height: auto;
+}
+
+.btn-breadcrumb {
+    margin-bottom: 20px;
+}
+
+/* Footer Makro.si */
+#makro-izvedba {
+    padding: 5px 10px 10px 10px;
+    float: left;
+    width: 10%;
+}
+#fri-izvedba {
+    padding: 10px;
+    float: right;
+    text-align: right;
+    width: 50%;
+}
+#makro-podpis {
+    background: url(../../images/makro/makro-izvedba.png) no-repeat scroll 0 0 transparent;
+    background-position:0px 0px;
+    display: block;
+    height: 30px;
+    margin: auto;
+    width: 90px;
+}
+#makro-podpis:hover {
+    background: url(../../images/makro/makro-izvedba.png) no-repeat scroll 0 0 transparent;
+    width: 96px;
+    background-position:0px -30px;
+}
+
+#foo {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    max-width: 300px;
+    display: none;
+}
+
+
+/* Breadcrumbs */
+/** The Magic **/
+.btn-breadcrumb .btn:not(:last-child):after {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 17px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-left: 10px solid white;
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;
+    left: 100%;
+    z-index: 3;
+}
+.btn-breadcrumb .btn:not(:last-child):before {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 17px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-left: 10px solid rgb(173, 173, 173);
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;
+    margin-left: 1px;
+    left: 100%;
+    z-index: 3;
+}
+
+/** The Spacing **/
+.btn-breadcrumb .btn {
+    padding:6px 12px 6px 24px;
+}
+.btn-breadcrumb .btn:first-child {
+    padding:6px 6px 6px 10px;
+}
+.btn-breadcrumb .btn:last-child {
+    padding:6px 18px 6px 24px;
+}
+
+/** Default button **/
+.btn-breadcrumb .btn.btn-default:not(:last-child):after {
+    border-left: 10px solid #fff;
+}
+.btn-breadcrumb .btn.btn-default:not(:last-child):before {
+    border-left: 10px solid #ccc;
+}
+.btn-breadcrumb .btn.btn-default:hover:not(:last-child):after {
+    border-left: 10px solid #ebebeb;
+}
+.btn-breadcrumb .btn.btn-default:hover:not(:last-child):before {
+    border-left: 10px solid #adadad;
+}

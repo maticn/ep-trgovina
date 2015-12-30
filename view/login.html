@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="eTrgovina JKMN">
+    <meta name="author" content="Matic & Jakob">
+    <link rel="icon" href="http://www.makro.si/favicon.ico">
+
+    <title>eTrgovina - Prijava</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../static/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../static/css/custom.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom Javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="../static/js/zemljevid.js"></script>
+    <!--Google Maps API-->
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnycWatbGyK6ldFqErjFtko1yeMclNUOA&amp;sensor=true"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Prijava v eTrgovino JKMN</h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form" action="login.php" method="post">
+                        <p>Prijavi se kot kupec, prodajalec ali administrator.</p>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-fw fa-user"></i>
+                                    </div>
+                                    <input class="form-control" placeholder="e-mail" id="email" name="email" type="email"
+                                           required autofocus>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-fw fa-unlock-alt"></i>
+                                    </div>
+                                    <input class="form-control" placeholder="geslo" id="password" name="password" type="password"
+                                           required>
+                                </div>
+                            </div>
+                            <!--<div class="checkbox">-->
+                            <!--<label>-->
+                            <!--<input name="remember" type="checkbox" value="Remember Me">Remember Me-->
+                            <!--</label>-->
+                            <!--</div>-->
+                            <input type="submit" value="Prijava" class="btn btn-lg btn-danger btn-block">
+                            <br />
+                            <a href="registerBuyer.html">Registriraj se</a> ali <a href="store_guest.html"> listaj ko gost. </a>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="map-canvas"></div>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
