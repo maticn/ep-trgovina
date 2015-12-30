@@ -7,7 +7,8 @@ class UporabnikDB extends AbstractDB {
     public static function insert(array $params) {
         $defaultVals = ["naslov"=>"","idPosta"=>null];
         $params["aktivno"] = false;
-        $params["geslo"] = password_hash($params["geslo"],PASSWORD_BCRYPT);
+        //$params["geslo"] = password_hash($params["geslo"],PASSWORD_BCRYPT);
+        $params["geslo"] = SHA1($params["geslo"]);
         $params = array_merge($defaultVals,$params);
         echo $params["idPosta"];
         return parent::modify("INSERT INTO Uporabnik (ime, priimek, email, geslo, idVloga, telefon, naslov, idPosta, datumRegistracije, aktivno) "
