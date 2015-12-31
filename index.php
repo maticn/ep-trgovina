@@ -24,6 +24,9 @@ $urls = [
     "view/login.php" => function () {
         UporabnikController::login();
     },
+    "view/adminpanel.php" => function () {
+        UporabnikController::edit();
+    },
     "books/add" => function () {
         BooksController::add();
     },

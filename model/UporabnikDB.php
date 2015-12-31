@@ -29,7 +29,7 @@ class UporabnikDB extends AbstractDB {
     public static function get(array $id) {
         $books = parent::query("SELECT ime, priimek, email, geslo, idVloga, telefon, naslov, datumRegistracije, aktivno"
             . " FROM Uporabnik"
-            . " WHERE id = :id", $id);
+            . " WHERE idUporabnik = :id", $id);
 
         if (count($books) == 1) {
             return $books[0];
@@ -39,7 +39,7 @@ class UporabnikDB extends AbstractDB {
     }
 
     public static function getUser(array $params) {
-        $users = parent::query("SELECT ime, priimek, email, geslo, idVloga, telefon, naslov, datumRegistracije, aktivno"
+        $users = parent::query("SELECT idUporabnik, ime, priimek, email, geslo, idVloga, telefon, naslov, datumRegistracije, aktivno"
             . " FROM Uporabnik"
             . " WHERE email = :email AND aktivno = 1", $params);
 

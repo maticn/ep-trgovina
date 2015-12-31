@@ -24,7 +24,7 @@ try {
         $_SESSION["idUporabnik"] = $result["idUporabnik"];
 
         if ($result["idVloga"] === "1")
-            header("Location:editadmin.php");
+            header("Location:adminpanel.php");
         elseif ($result["idVloga"] === "2")
             header("Location:editseller.php");
         else
