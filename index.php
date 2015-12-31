@@ -5,6 +5,7 @@ session_start();
 
 //require_once("controller/BooksController.php");
 require_once("controller/IzdelkiController.php");
+require_once("controller/UporabnikController.php");
 
 define("BASE_URL", $_SERVER["SCRIPT_NAME"] . "/");
 define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
@@ -17,6 +18,12 @@ $urls = [
     "izdelki" => function () {
         IzdelkiController::index();
     },
+    "login" => function () {
+        UporabnikController::index();
+    },
+    "view/login.php" => function () {
+        UporabnikController::login();
+    },
     "books/add" => function () {
         BooksController::add();
     },
@@ -27,7 +34,7 @@ $urls = [
         BooksController::delete();
     },
     "" => function () {
-        ViewHelper::redirect(BASE_URL . "izdelki");
+        ViewHelper::redirect(BASE_URL . "login");
     },
 ];
 

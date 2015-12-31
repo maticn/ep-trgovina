@@ -41,12 +41,12 @@ class UporabnikDB extends AbstractDB {
     public static function getUser(array $params) {
         $users = parent::query("SELECT ime, priimek, email, geslo, idVloga, telefon, naslov, datumRegistracije, aktivno"
             . " FROM Uporabnik"
-            . " WHERE email = :email AND aktivno = :aktivno", $params);
+            . " WHERE email = :email AND aktivno = 1", $params);
 
         if (count($users) == 1) {
             return $users[0];
         } else {
-            throw new InvalidArgumentException("No such uporabnik.");
+            throw new InvalidArgumentException("Uporabnik ne obstaja.");
         }
     }
 

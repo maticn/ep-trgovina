@@ -1,9 +1,15 @@
 <?php
 require 'model/UporabnikDB.php';
 
-UporabnikDB::insert(
+//UporabnikDB::insert(
+//    [
+//        "ime" => "Miha", "priimek" => "Robic", "email" => "miha@gmail.com", "geslo" => "Test123!", "idVloga" => 1,
+//        "telefon" => "031123456"
+//    ]
+//);
+
+UporabnikDB::getUser(
     [
-        "ime" => "Miha", "priimek" => "Robic", "email" => "miha@gmail.com", "geslo" => "Test123!", "idVloga" => 1,
-        "telefon" => "031123456"
+        "email" => "info@makro.si"
     ]
 );
