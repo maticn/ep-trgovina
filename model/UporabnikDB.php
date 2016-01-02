@@ -5,21 +5,42 @@ require_once 'model/AbstractDB.php';
 class UporabnikDB extends AbstractDB {
 
     public static function insert(array $params) {
-        $defaultVals = ["naslov"=>"","idPosta"=>null];
+        $defaultVals = ["naslov" => "", "idPosta" => null];
         $params["aktivno"] = false;
         //$params["geslo"] = password_hash($params["geslo"],PASSWORD_BCRYPT);
         $params["geslo"] = SHA1($params["geslo"]);
-        $params = array_merge($defaultVals,$params);
-        echo $params["idPosta"];
+        $params = array_merge($defaultVals, $params);
+        //echo $params["idPosta"];
         return parent::modify("INSERT INTO Uporabnik (ime, priimek, email, geslo, idVloga, telefon, naslov, idPosta, datumRegistracije, aktivno) "
             . " VALUES (:ime, :priimek, :email, :geslo, :idVloga, :telefon, :naslov, :idPosta, now(), :aktivno)", $params);
     }
 
     public static function update(array $params) {
-        return parent::modify("UPDATE book SET author = :author, title = :title, "
-            . "description = :description, price = :price, year = :year"
-            . " WHERE id = :id", $params);
-        // TODO
+        return parent::modify("UPDATE Uporabnik SET ime = :ime, priimek = :priimek"
+            . " WHERE idUporabnik = :idUporabnik", $params);
+    }
+
+    public static function updateStranka(array $params) {
+        return parent::modify("UPDATE Uporabnik SET "
+            . "telefon = :telefon, naslov = :naslov, idPosta = :idPosta"
+            . " WHERE idUporabnik = :idUporabnik", $params);
+    }
+
+    public static function updatePass(array $params) {
+        $params["geslo"] = SHA1($params["geslo"]);
+
+        return parent::modify("UPDATE Uporabnik SET geslo = :geslo"
+            . " WHERE idUporabnik = :idUporabnik", $params);
+    }
+
+    public static function updateVloga(array $params) {
+        return parent::modify("UPDATE Uporabnik SET idVloga = :idVloga"
+            . " WHERE idUporabnik = :idUporabnik", $params);
+    }
+
+    public static function updateAktivno(array $params) {
+        return parent::modify("UPDATE Uporabnik SET aktivno = :aktivno"
+            . " WHERE idUporabnik = :idUporabnik", $params);
     }
 
     public static function delete(array $id) {
@@ -27,14 +48,14 @@ class UporabnikDB extends AbstractDB {
     }
 
     public static function get(array $id) {
-        $books = parent::query("SELECT ime, priimek, email, geslo, idVloga, telefon, naslov, datumRegistracije, aktivno"
+        $users = parent::query("SELECT ime, priimek, email, geslo, idVloga, telefon, naslov, datumRegistracije, aktivno"
             . " FROM Uporabnik"
             . " WHERE idUporabnik = :id", $id);
 
-        if (count($books) == 1) {
-            return $books[0];
+        if (count($users) == 1) {
+            return $users[0];
         } else {
-            throw new InvalidArgumentException("No such book");
+            throw new InvalidArgumentException("Uporabnik ne obstaja.");
         }
     }
 
@@ -48,6 +69,18 @@ class UporabnikDB extends AbstractDB {
         } else {
             throw new InvalidArgumentException("Uporabnik ne obstaja.");
         }
+    }
+
+    public static function getCustomers(array $params) {
+        return parent::query("SELECT idUporabnik, ime, priimek, email, aktivno"
+            . " FROM Uporabnik"
+            . " WHERE idVloga = 3", $params);
+    }
+
+    public static function getSeller(array $params) {
+        return parent::query("SELECT idUporabnik, ime, priimek, email, aktivno"
+            . " FROM Uporabnik"
+            . " WHERE idVloga = 2", $params);
     }
 
     public static function getAll() {
