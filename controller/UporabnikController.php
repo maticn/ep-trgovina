@@ -17,6 +17,18 @@ class UporabnikController {
         echo ViewHelper::render("view/adminpanel.php");
     }
 
+    public static function editSeller() {
+        echo ViewHelper::render("view/sellerpanel.php");
+    }
+
+    public static function editUser() {
+        echo ViewHelper::render("view/userpanel.php");
+    }
+
+    public static function activate() {
+        echo ViewHelper::render("view/aktivacija.php");
+    }
+
     public static function add() {
         $form = new BooksInsertForm("add_form");
 

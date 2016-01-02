@@ -106,12 +106,12 @@ if (isset($_GET["manage"])) {
                 echo "</table>";
             } elseif ($mode === "urediAcc") {   // uredi stvoj profil
                 $id = $_SESSION["idUporabnik"];
-                $result = UporabnikDB::get(["idUporabnik" => $id]);
+                $result = UporabnikDB::get(["id" => $id]);
 
 
             } elseif ($mode === "edit") {       // uredi uporabnika z dolocenim id-jem
                 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-                $result = UporabnikDB::get(["idUporabnik" => $id]);
+                $result = UporabnikDB::get(["id" => $id]);
             }
 
             if ($mode !== "urediCuSe") {            // urejamo stranko
@@ -136,13 +136,13 @@ if (isset($_GET["manage"])) {
                             <tr>
                         <?php } elseif ($mode === "edit" || $mode === "create") {    // urejamo ali dodajamo stranko, prikaz relavantnih polj ?>
                             <tr>
-                                <td>First name</td>
+                                <td>Ime</td>
                                 <td><input
                                         class="fname form-control" <?php if ($mode != "create" && isset($result["ime"])) echo "value='" . $result["ime"] . "'"; ?>
                                         type="text" name="ime" required></td>
                             </tr>
                             <tr>
-                                <td>Last name</td>
+                                <td>Priimek</td>
                                 <td><input
                                         class="lname form-control" <?php if ($mode != "create" && isset($result["priimek"])) echo "value='" . $result["priimek"] . "'"; ?>
                                         type="text" name="priimek" required></td>

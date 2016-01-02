@@ -27,6 +27,15 @@ $urls = [
     "view/adminpanel.php" => function () {
         UporabnikController::edit();
     },
+    "view/sellerpanel.php" => function () {
+        UporabnikController::editSeller();
+    },
+    "view/userpanel.php" => function () {
+        UporabnikController::editUser();
+    },
+    "view/aktivacija.php" => function () {
+        UporabnikController::akctivate();
+    },
     "books/add" => function () {
         BooksController::add();
     },

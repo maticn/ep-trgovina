@@ -71,16 +71,16 @@ class UporabnikDB extends AbstractDB {
         }
     }
 
-    public static function getCustomers(array $params) {
+    public static function getCustomers() {
         return parent::query("SELECT idUporabnik, ime, priimek, email, aktivno"
             . " FROM Uporabnik"
-            . " WHERE idVloga = 3", $params);
+            . " WHERE idVloga = 3");
     }
 
-    public static function getSeller(array $params) {
+    public static function getSeller() {
         return parent::query("SELECT idUporabnik, ime, priimek, email, aktivno"
             . " FROM Uporabnik"
-            . " WHERE idVloga = 2", $params);
+            . " WHERE idVloga = 2");
     }
 
     public static function getAll() {
