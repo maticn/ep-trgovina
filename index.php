@@ -33,8 +33,11 @@ $urls = [
     "view/userpanel.php" => function () {
         UporabnikController::editUser();
     },
-    "view/aktivacija.php" => function () {
+    "view/prodajalci.php" => function () {
         UporabnikController::activate();
+    },
+    "view/customerpanel.php" => function () {
+        UporabnikController::customer();
     },
     "books/add" => function () {
         BooksController::add();

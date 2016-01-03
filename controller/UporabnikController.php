@@ -26,7 +26,11 @@ class UporabnikController {
     }
 
     public static function activate() {
-        echo ViewHelper::render("view/aktivacija.php");
+        echo ViewHelper::render("view/prodajalci.php");
+    }
+
+    public static function customer() {
+        echo ViewHelper::render("view/customerpanel.php");
     }
 
     public static function add() {

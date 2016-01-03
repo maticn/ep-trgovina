@@ -24,7 +24,7 @@ if (!isset($_SESSION["idUporabnik"])) {
             </ul>
             <ul class="nav nav-sidebar">
                 <li><a href="adminpanel.php?id=-1">Ustvari prodajalca</a></li>
-                <li class="active"><a href="aktivacija.php">Upravljaj s prodajalci</a></li>
+                <li class="active"><a href="prodajalci.php">Upravljaj s prodajalci</a></li>
 
             </ul>
         </div>

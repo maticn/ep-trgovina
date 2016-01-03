@@ -6,8 +6,6 @@
  * Time: 12:55
  */
 
-
-
 // posodobi status uporabnika
 if (isset($_GET["aktivno"]) && isset($_GET["id"]) && $_GET["id"] != -1) {
     // le administrator !
@@ -39,17 +37,17 @@ if (isset($_POST["id"]) && $_POST["id"] != -1 && isset($_POST["idVloga"]) && $_P
     }
 
     if ($_POST["idVloga"] === "2") {
-        header("Location:aktivacija.php");
+        header("Location:prodajalci.php");
         exit;
     } elseif ($_POST["idVloga"] === "1") {
         header("Location:adminpanel.php");
         exit;
     } elseif ($_POST["idVloga"] === "3") {
         if (isset($_POST["editing"]) && $_POST["editing"] == "customer") {
-            header("Location:selerpanel.php?manage");
+            header("Location:sellerpanel.php?manage");
             exit;
         } else {
-            header("Location:selerpanel.php");
+            header("Location:sellerpanel.php");
             exit;
         }
     }
@@ -95,10 +93,10 @@ if (isset($_POST["id"]) && $_POST["id"] == -1 && isset($_POST["idVloga"]) && $_P
 
 
     if ($_POST["idVloga"] === "2") {                    // prodajalec
-        header("Location:aktivacija.php");
+        header("Location:prodajalci.php");
         exit;
     } elseif ($_POST["idVloga"] === "3") {              // stranka
-        header("Location:selerpanel.php?manage");
+        header("Location:sellerpanel.php?manage");
         exit;
     }
 }

@@ -10,6 +10,10 @@ if (!isset($_SESSION["idUporabnik"])) {
     header("Location:" . $_SERVER["SCRIPT_NAME"] . "/login");
     echo "Uporabnik ni prijavljen.";
 }
+if ($_SESSION["idVloga"] != 2) {
+    header("Location:" . $_SERVER["SCRIPT_NAME"] . "/login");
+    echo "Nimate pravic prodajalca.";
+}
 
 $mode = "urediAcc";
 if (isset($_GET["id"]) && $_GET["id"] != null && $_GET["id"] != -1) {
@@ -21,7 +25,7 @@ if (isset($_GET["id"]) && $_GET["id"] != null && $_GET["id"] == -1) {
 if (isset($_GET["manage"])) {
     $mode = "urediCuSe";    // uredi prodajalca ali stranko
 }
-echo $mode;
+
 ?>
 
 <div class="container-fluid">
@@ -31,14 +35,14 @@ echo $mode;
                 <li><a href="#">Overview</a></li>
             </ul>
             <ul class="nav nav-sidebar">
-                <li <?php /*in urejamo levi meni*/
-                if ($mode === "urediAcc") echo 'class="active"'; ?>><a href="sellerpanel.php">Uredi račun</a></li>
+                <li <?php if ($mode === "urediAcc") echo 'class="active"'; ?>>
+                    <a href="sellerpanel.php">Uredi račun</a></li>
             </ul>
             <ul class="nav nav-sidebar">
-                <li <?php if ($mode === "create") echo 'class="active"'; ?>><a href="sellerpanel.php?id=-1">Ustvari
-                        stranko</a></li>
-                <li <?php if ($mode === "urediCuSe" || $mode === "edit") echo 'class="active"'; ?>><a
-                        href="sellerpanel.php?manage">Upravljanje s strankami</a></li>
+                <li <?php if ($mode === "create") echo 'class="active"'; ?>>
+                    <a href="sellerpanel.php?id=-1">Ustvari stranko</a></li>
+                <li <?php if ($mode === "urediCuSe" || $mode === "edit") echo 'class="active"'; ?>>
+                    <a href="sellerpanel.php?manage">Upravljanje s strankami</a></li>
             </ul>
             <ul class="nav nav-sidebar">
                 <li><a href="orders.php">Naročila</a></li>
@@ -65,7 +69,7 @@ echo $mode;
 
             if ($mode === "urediCuSe") {    // pridobi seznam strank
                 echo "<table>";
-                echo "<tr><th>Ime</th><th>Priimek</th><th>email</th><th>Aktivno</th><th></th></tr>";
+                echo "<tr><th>ID</th><th>Ime</th><th>Priimek</th><th>email</th><th>Aktivno</th><th>Telefon</th><th>Naslov</th><th>Postna stevilka</th></tr>";
 
                 class TableRows extends RecursiveIteratorIterator
                 {
@@ -108,7 +112,6 @@ echo $mode;
                 $id = $_SESSION["idUporabnik"];
                 $result = UporabnikDB::get(["id" => $id]);
 
-
             } elseif ($mode === "edit") {       // uredi uporabnika z dolocenim id-jem
                 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
                 $result = UporabnikDB::get(["id" => $id]);
@@ -116,7 +119,7 @@ echo $mode;
 
             if ($mode !== "urediCuSe") {            // urejamo stranko
                 ?>
-                <form action="userpanel.php" method="post" onsubmit="return validateRegistration()">
+                <form action="userpanel.php" method="post">
                     <table style="width:100%">
                         <?php
                         if ($mode === "urediAcc") {     // urejamo svoj racun, prikaz zgolj relavantnih polj
@@ -124,13 +127,13 @@ echo $mode;
                             <tr>
                                 <td>Ime</td>
                                 <td><input
-                                        class="fname form-control" <?php if ($mode != "create" && isset($result["ime"])) echo "value='" . $result["ime"] . "'"; ?>
+                                        class="form-control" <?php if ($mode != "create" && isset($result["ime"])) echo "value='" . $result["ime"] . "'"; ?>
                                         type="text" name="ime" required></td>
                             </tr>
                             <tr>
                                 <td>Priimek</td>
                                 <td><input
-                                        class="lname form-control" <?php if ($mode != "create" && isset($result["priimek"])) echo "value='" . $result["priimek"] . "'"; ?>
+                                        class="form-control" <?php if ($mode != "create" && isset($result["priimek"])) echo "value='" . $result["priimek"] . "'"; ?>
                                         type="text" name="priimek" required></td>
                             </tr>
                             <tr>
@@ -138,25 +141,25 @@ echo $mode;
                             <tr>
                                 <td>Ime</td>
                                 <td><input
-                                        class="fname form-control" <?php if ($mode != "create" && isset($result["ime"])) echo "value='" . $result["ime"] . "'"; ?>
+                                        class="form-control" <?php if ($mode != "create" && isset($result["ime"])) echo "value='" . $result["ime"] . "'"; ?>
                                         type="text" name="ime" required></td>
                             </tr>
                             <tr>
                                 <td>Priimek</td>
                                 <td><input
-                                        class="lname form-control" <?php if ($mode != "create" && isset($result["priimek"])) echo "value='" . $result["priimek"] . "'"; ?>
+                                        class="form-control" <?php if ($mode != "create" && isset($result["priimek"])) echo "value='" . $result["priimek"] . "'"; ?>
                                         type="text" name="priimek" required></td>
                             </tr>
                             <tr>
                                 <td>E-mail</td>
                                 <td><input
-                                        class="lname form-control" <?php if ($mode != "create" && isset($result["email"])) echo "value='" . $result["email"] . "'"; ?>
-                                        type="text" name="email" required></td>
+                                        class="form-control" <?php if ($mode != "create" && isset($result["email"])) echo "value='" . $result["email"] . "'"; ?>
+                                        type="email" name="email" required></td>
                             </tr>
                             <tr>
                                 <td>Telefon</td>
                                 <td><input
-                                        class="lname form-control" <?php if ($mode != "create" && isset($result["telefon"])) echo "value='" . $result["telefon"] . "'"; ?>
+                                        class="form-control" <?php if ($mode != "create" && isset($result["telefon"])) echo "value='" . $result["telefon"] . "'"; ?>
                                         type="text" name="telefon" required></td>
                             </tr>
                             <tr>
@@ -198,7 +201,7 @@ echo $mode;
 									<input value="Ustvari novo stranko" class="fbtn btn-lg btn-primary btn-block" type="submit" name="submit" style="width: 50%; margin-left: auto; margin-right: auto;" onclick="return checkpassword()"/>';
                     } elseif ($mode === "urediAcc" || $mode === "edit") {
                         echo '	<input type="hidden" value=' . $id . ' name="id">
-									<input value="Save" class="fbtn btn-lg btn-primary btn-block" type="submit" style="width: 50%; margin-left: auto; margin-right: auto;" onclick="return checkpassword()"/>';
+									<input value="Shrani" class="fbtn btn-lg btn-primary btn-block" type="submit" style="width: 50%; margin-left: auto; margin-right: auto;" onclick="return checkpassword()"/>';
                     }
                     ?>
                 </form>

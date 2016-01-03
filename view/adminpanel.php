@@ -25,7 +25,7 @@ if (isset($_GET["id"]) && $_GET["id"] != null && $_GET["id"] == -1) {
 ?>
 
 <ul class="nav nav-sidebar">
-    <li <?php if ($mode === "edit") echo 'class="active"'; ?>><a href="aktivacija.php">Upravljaj s prodajalci</a>
+    <li <?php if ($mode === "edit") echo 'class="active"'; ?>><a href="prodajalci.php">Upravljaj s prodajalci</a>
     </li>
     <li <?php if ($mode === "create") echo 'class="active"'; ?>><a href="adminpanel.php?id=-1">Ustvari prodajalca</a>
     </li>
@@ -125,7 +125,7 @@ try {
 
 <?php
 if ($mode === "edit")
-    echo '<a href="aktivacija.php" style="font-size:20px">Nazaj</a>';
+    echo '<a href="prodajalci.php" style="font-size:20px">Nazaj</a>';
 ?>
 </div>
 </div>

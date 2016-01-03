@@ -27,7 +27,7 @@ try {
         if ($result["idVloga"] === "1")
             header("Location:adminpanel.php");
         elseif ($result["idVloga"] === "2")
-            header("Location:editseller.php");
+            header("Location:sellerpanel.php");
         else
             header("Location:store.php");
         exit;
