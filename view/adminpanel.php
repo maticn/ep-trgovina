@@ -10,6 +10,10 @@ if (!isset($_SESSION["idUporabnik"])) {
     header("Location:" . $_SERVER["SCRIPT_NAME"] . "/login");
     echo "Uporabnik ni prijavljen.";
 }
+if ($_SESSION["idVloga"] != 1) {
+    header("Location:" . $_SERVER["SCRIPT_NAME"] . "/login");
+    echo "Nimate pravic administratorja.";
+}
 
 $mode = "manage";
 if (isset($_GET["id"]) && $_GET["id"] != null && $_GET["id"] != -1) {
@@ -21,14 +25,13 @@ if (isset($_GET["id"]) && $_GET["id"] != null && $_GET["id"] == -1) {
 ?>
 
 <ul class="nav nav-sidebar">
-    <li <?php if ($mode === "create") echo 'class="active"'; ?>><a href="editstaff.php?id=-1">Ustvari prodajalca</a>
+    <li <?php if ($mode === "edit") echo 'class="active"'; ?>><a href="aktivacija.php">Upravljaj s prodajalci</a>
     </li>
-    <li <?php if ($mode === "edit") echo 'class="active"'; ?>><a href="sellerActivation.php">Upravljaj prodajalce</a>
+    <li <?php if ($mode === "create") echo 'class="active"'; ?>><a href="adminpanel.php?id=-1">Ustvari prodajalca</a>
     </li>
 </ul>
 
 <?php
-echo "MODE: " . $mode;
 try {
     if ($mode === "manage") {
         echo "<h1 class='page-header'>Upravljaj racun</h1><div class='col-md-8'>";
@@ -43,9 +46,6 @@ try {
     } else {
         $id = $_SESSION["idUporabnik"];
     }
-
-    echo "ID: " . $id;
-
 
     $user = UporabnikDB::get(["id" => $id]);
 
@@ -63,26 +63,26 @@ try {
 }
 ?>
 
-<form action="userpanel.php" method="post" onsubmit="return validateRegistration()">
+<form action="userpanel.php" method="post">
     <table style="width:100%">
         <tr>
             <td>Ime</td>
-            <td><input class="fname form-control" <?php if ($mode != "create") echo "value=" . $user["ime"]; ?>
+            <td><input class="form-control" <?php if ($mode != "create") echo "value=" . $user["ime"]; ?>
                        type="text" name="ime" required></td>
         </tr>
         <tr>
             <td>Priimek</td>
-            <td><input class="lname form-control" <?php if ($mode != "create") echo "value=" . $user["priimek"]; ?>
+            <td><input class="form-control" <?php if ($mode != "create") echo "value=" . $user["priimek"]; ?>
                        type="text" name="priimek" required></td>
         </tr>
         <?php
         if ($mode === "edit")
             echo "<tr>
-							<td>Aktivno</td>
-							<td>
-								<a class='$class' href='userpanel.php?aktivno=$aktivno&id=$id'>$value</a>
-							</td>
-						</tr>";
+                    <td>Aktivno</td>
+                    <td>
+                        <a class='$class' href='userpanel.php?aktivno=$aktivno&id=$id'>$value</a>
+                    </td>
+                </tr>";
         ?>
         <tr>
             <td colspan="2">
@@ -92,28 +92,32 @@ try {
         <?php
         if ($mode === "create") {
             echo '<tr>
-						          <td>e-mail</td>
-						          <td><input class="lname form-control" type="text" name="email" required></td>
-				  		        </tr>';
+                      <td>e-mail</td>
+                      <td><input class="form-control" type="email" name="email" required></td>
+                </tr>';
         }
         ?>
         <tr>
             <td>Novo geslo</td>
-            <td><input class="lname form-control" type="password" name="password"></td>
+            <td><input class="form-control" type="password" name="password"></td>
         </tr>
         <tr>
             <td>Potrdi geslo</td>
-            <td><input class="lname form-control" type="password" name="confirm"></td>
+            <td><input class="form-control" type="password" name="confirm"></td>
         </tr>
     </table>
     <hr>
-    <input type="hidden" value="seller" name="type"/>
+
+    <input type="hidden" value="2" name="idVloga"/>
     <?php
     if ($mode === "create") {
         echo '	<input type="hidden" value=-1 name="id">
-								<input value="Ustvari novega prodajalca" class="fbtn btn-lg btn-primary btn-block" type="submit" name="submit" style="width: 50%; margin-left: auto; margin-right: auto;" onclick="return checkpassword()"/>';
+	            <input type="hidden" value="2" name="idVloga"/>
+				<input value="Ustvari novega prodajalca" class="fbtn btn-lg btn-primary btn-block" type="submit" name="submit" style="width: 50%; margin-left: auto; margin-right: auto;" onclick="checkpassword()"/>';
     } else {
         echo '	<input type="hidden" value=' . $id . ' name="id">
+                <input type="hidden" value="1" name="idVloga"/>
+                <input type="hidden" value="manage" name="mode"/>
 				<input value="Shrani" class="fbtn btn-lg btn-primary btn-block" type="submit" style="width: 50%; margin-left: auto; margin-right: auto;" onclick="return checkpassword()"/>';
     }
     ?>
@@ -121,7 +125,7 @@ try {
 
 <?php
 if ($mode === "edit")
-    echo '<a href="sellerActivation.php" style="font-size:20px">Nazaj</a>';
+    echo '<a href="aktivacija.php" style="font-size:20px">Nazaj</a>';
 ?>
 </div>
 </div>
@@ -131,8 +135,10 @@ if ($mode === "edit")
 
 <script>
     function checkpassword() {
+        //alert("sprozi");
         var pass1 = $('input[name=password]').val();
         var pass2 = $('input[name=confirm]').val();
+
         if (pass1 != '' && pass1 != pass2) {
             alert("Gesli se ne ujemata.");
             $('input[name=password]').val("");

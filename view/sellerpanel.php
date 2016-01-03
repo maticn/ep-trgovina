@@ -21,7 +21,7 @@ if (isset($_GET["id"]) && $_GET["id"] != null && $_GET["id"] == -1) {
 if (isset($_GET["manage"])) {
     $mode = "urediCuSe";    // uredi prodajalca ali stranko
 }
-
+echo $mode;
 ?>
 
 <div class="container-fluid">
@@ -172,6 +172,7 @@ if (isset($_GET["manage"])) {
                                         type="text" name="idPosta" required></td>
                             </tr>
                             <input type="hidden" value="customer" name="editing"/>
+                            <input type="hidden" value="3" name="idVloga"/>
                         <?php } // konec urejanja ali dodajanja stranke?>
                         <tr>
                             <td colspan="2">

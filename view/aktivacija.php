@@ -20,11 +20,11 @@ if (!isset($_SESSION["idUporabnik"])) {
                 <li><a href="#">Pregled</a></li>
             </ul>
             <ul class="nav nav-sidebar">
-                <li><a href="editadmin.php">Upravljaj račun</a></li>
+                <li><a href="adminpanel.php">Upravljaj račun</a></li>
             </ul>
             <ul class="nav nav-sidebar">
-                <li><a href="editadmin.php?id=-1">Ustvari prodajalca</a></li>
-                <li class="active"><a href="sellerActivation.php">Upravljaj s prodajalci</a></li>
+                <li><a href="adminpanel.php?id=-1">Ustvari prodajalca</a></li>
+                <li class="active"><a href="aktivacija.php">Upravljaj s prodajalci</a></li>
 
             </ul>
         </div>
@@ -34,7 +34,7 @@ if (!isset($_SESSION["idUporabnik"])) {
             <div class="col-md-8">
                 <?php
                 echo "<table>";
-                echo "<tr><th>Ime</th><th>Priimek</th><th>email</th><th>Aktivno</th><th></th></tr>";
+                echo "<tr><th>ID</th><th>Ime</th><th>Priimek</th><th>email</th><th>Aktivno</th><th></th></tr>";
 
                 class TableRows extends RecursiveIteratorIterator
                 {

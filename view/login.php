@@ -22,6 +22,7 @@ try {
     if ($result["geslo"] === SHA1($_POST["password"])) {
 
         $_SESSION["idUporabnik"] = $result["idUporabnik"];
+        $_SESSION["idVloga"] = $result["idVloga"];
 
         if ($result["idVloga"] === "1")
             header("Location:adminpanel.php");

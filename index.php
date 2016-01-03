@@ -34,7 +34,7 @@ $urls = [
         UporabnikController::editUser();
     },
     "view/aktivacija.php" => function () {
-        UporabnikController::akctivate();
+        UporabnikController::activate();
     },
     "books/add" => function () {
         BooksController::add();
