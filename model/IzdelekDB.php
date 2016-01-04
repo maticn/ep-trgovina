@@ -21,7 +21,7 @@ class IzdelekDB extends AbstractDB {
     public static function get(array $params) {
         $izdelki = parent::query("SELECT ime, opis, cena, aktivno"
             . " FROM Izdelek"
-            . " WHERE idIzdelek = :idIzdelek", $params);
+            . " WHERE idIzdelek = :id", $params);
 
         if (count($izdelki) == 1) {
             return $izdelki[0];
