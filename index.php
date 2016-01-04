@@ -33,21 +33,11 @@ $urls = [
     "userpanel" => function () {
         UporabnikController::editUser();
     },
-    "izdelki" => function () {
-        IzdelkiController::index();
-    },
     "store" => function () {
         IzdelkiController::index();
     },
-
-    "books/add" => function () {
-        BooksController::add();
-    },
-    "books/edit" => function () {
-        BooksController::edit();
-    },
-    "books/delete" => function () {
-        BooksController::delete();
+    "store/cart" => function(){
+        IzdelkiController::cart();
     },
     "" => function () {
         ViewHelper::redirect(BASE_URL . "login");
