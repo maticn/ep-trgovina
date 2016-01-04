@@ -86,7 +86,7 @@ $result = UporabnikDB::get(["id" => $id]);
     <div class="row">
         <div class="col-md-offset-2 col-md-8">
             <h1 class="page-header"> Account Settings</h1>
-            <form action="userpanel.php" method="post">
+            <form action="userpanel" method="post">
                 <table style="width:100%">
                     <tr>
                         <td>Ime</td>

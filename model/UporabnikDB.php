@@ -5,7 +5,7 @@ require_once 'model/AbstractDB.php';
 class UporabnikDB extends AbstractDB {
 
     public static function insert(array $params) {
-        $defaultVals = ["naslov" => "", "idPosta" => null];
+        $defaultVals = ["telefon" => null, "naslov" => null, "idPosta" => null];
         $params["aktivno"] = false;
         //$params["geslo"] = password_hash($params["geslo"],PASSWORD_BCRYPT);
         $params["geslo"] = SHA1($params["geslo"]);

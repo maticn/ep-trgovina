@@ -11,7 +11,7 @@ if (isset($_GET["aktivno"]) && isset($_GET["id"]) && $_GET["id"] != -1) {
     // le administrator !
     $params = array("idUporabnik" => filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS), "aktivno" => filter_input(INPUT_GET, 'aktivno', FILTER_SANITIZE_SPECIAL_CHARS));
     UporabnikDB::updateAktivno($params);
-    header("Location:adminpanel.php?id=" . $_GET['id']);
+    header("Location:adminpanel?id=" . $_GET['id']);
     exit;
 }
 
@@ -37,17 +37,17 @@ if (isset($_POST["id"]) && $_POST["id"] != -1 && isset($_POST["idVloga"]) && $_P
     }
 
     if ($_POST["idVloga"] === "2") {
-        header("Location:prodajalci.php");
+        header("Location:prodajalci");
         exit;
     } elseif ($_POST["idVloga"] === "1") {
-        header("Location:adminpanel.php");
+        header("Location:adminpanel");
         exit;
     } elseif ($_POST["idVloga"] === "3") {
         if (isset($_POST["editing"]) && $_POST["editing"] == "customer") {
-            header("Location:sellerpanel.php?manage");
+            header("Location:sellerpanel?manage");
             exit;
         } else {
-            header("Location:sellerpanel.php");
+            header("Location:sellerpanel");
             exit;
         }
     }
@@ -60,7 +60,7 @@ if (isset($_POST["id"]) && $_POST["id"] == -1 && isset($_POST["idVloga"]) && $_P
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
     }
     if (isset($_POST["password"]) && $_POST["password"] === $_POST["confirm"] && !empty($_POST["password"])) {
-        $geslo = filter_input(INPUT_POST, 'geslo', FILTER_SANITIZE_SPECIAL_CHARS);
+        $geslo = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
     }
     if (isset($_POST["ime"]) && !empty($_POST["ime"])) {
         $ime = filter_input(INPUT_POST, 'ime', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -93,15 +93,15 @@ if (isset($_POST["id"]) && $_POST["id"] == -1 && isset($_POST["idVloga"]) && $_P
 
 
     if ($_POST["idVloga"] === "2") {                    // prodajalec
-        header("Location:prodajalci.php");
+        header("Location:prodajalci");
         exit;
     } elseif ($_POST["idVloga"] === "3") {              // stranka
-        header("Location:sellerpanel.php?manage");
+        header("Location:sellerpanel?manage");
         exit;
     }
 }
 
-// nismo bili v nobenem if-u, redirectamo na trgovino
-header("Location:shop.php");
+// nismo bili v nobenem if-u, preusmerimo na trgovino
+header("Location:shop");
 
 ?>

@@ -6,14 +6,12 @@
  * Time: 15:37
  */
 
-//require 'model/UporabnikDB.php';
-
 try {
     if ($_POST["email"] != null && !empty($_POST["email"])) {
         $username = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
         $result = UporabnikDB::getUser(["email" => $username]);
     } else {
-        header("refresh:5;url=" . $_SERVER["SCRIPT_NAME"] . "/login");
+        header("refresh:5;url=login");
         echo "Vnesite uporabnisko ime.";
         exit;
     }
@@ -25,19 +23,19 @@ try {
         $_SESSION["idVloga"] = $result["idVloga"];
 
         if ($result["idVloga"] === "1")
-            header("Location:adminpanel.php");
+            header("Location:adminpanel");
         elseif ($result["idVloga"] === "2")
-            header("Location:sellerpanel.php");
+            header("Location:sellerpanel");
         else
-            header("Location:store.php");
+            header("Location:store");
         exit;
 
     } else {
-        header("refresh:5;url=" . $_SERVER["SCRIPT_NAME"] . "/login");
+        header("refresh:5;url=login");
         echo "Napacno geslo.";
         exit;
     }
 } catch (InvalidArgumentException $e) {
-    header("refresh:5;url=" . $_SERVER["SCRIPT_NAME"] . "/login");
+    header("refresh:5;url=login");
     echo($e->getMessage());
 }

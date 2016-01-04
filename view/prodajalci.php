@@ -67,7 +67,7 @@ if (!isset($_SESSION["idUporabnik"])) {
                     }
 
                     if ($k == "id") {
-                        echo "<td><a class='btn btn-default' href='adminpanel.php?id=$v'>Uredi</a></td>";
+                        echo "<td><a class='btn btn-default' href='adminpanel?id=$v'>Uredi</a></td>";
                     } else
                         echo "<td>$v</td>";
 

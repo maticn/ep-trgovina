@@ -15,30 +15,57 @@ $path = isset($_SERVER["PATH_INFO"]) ? trim($_SERVER["PATH_INFO"], "/") : "";
 
 // ROUTER: defines mapping between URLS and controllers
 $urls = [
-    "izdelki" => function () {
-        IzdelkiController::index();
+    "layout" => function () {
+        UporabnikController::layout();
     },
+
     "login" => function () {
         UporabnikController::index();
     },
-    "view/login.php" => function () {
+    "checkLogin" => function () {
         UporabnikController::login();
     },
-    "view/adminpanel.php" => function () {
+    "adminpanel" => function () {
         UporabnikController::edit();
     },
-    "view/sellerpanel.php" => function () {
+    "sellerpanel" => function () {
         UporabnikController::editSeller();
     },
-    "view/userpanel.php" => function () {
+    "userpanel" => function () {
         UporabnikController::editUser();
     },
-    "view/prodajalci.php" => function () {
+    "prodajalci" => function () {
         UporabnikController::activate();
     },
-    "view/customerpanel.php" => function () {
+    "customerpanel" => function () {
         UporabnikController::customer();
     },
+    "izdelki" => function () {
+        IzdelkiController::index();
+    },
+    "store" => function () {
+        IzdelkiController::index();
+    },
+
+//    "view/login.php" => function () {
+//        UporabnikController::login();
+//    },
+//    "view/adminpanel.php" => function () {
+//        UporabnikController::edit();
+//    },
+//    "view/sellerpanel.php" => function () {
+//        UporabnikController::editSeller();
+//    },
+//    "view/userpanel.php" => function () {
+//        UporabnikController::editUser();
+//    },
+//    "view/prodajalci.php" => function () {
+//        UporabnikController::activate();
+//    },
+//    "view/customerpanel.php" => function () {
+//        UporabnikController::customer();
+//    },
+
     "books/add" => function () {
         BooksController::add();
     },

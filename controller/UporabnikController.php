@@ -9,6 +9,10 @@ class UporabnikController {
         echo ViewHelper::render("view/login.html");
     }
 
+    public static function layout() {
+        echo ViewHelper::render("view/includes/layout.html");
+    }
+
     public static function login() {
         echo ViewHelper::render("view/login.php");
     }
