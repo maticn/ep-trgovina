@@ -11,6 +11,12 @@ if (isset($_GET["aktivno"]) && isset($_GET["id"]) && $_GET["id"] != -1) {
     // le administrator !
     $params = array("idUporabnik" => filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS), "aktivno" => filter_input(INPUT_GET, 'aktivno', FILTER_SANITIZE_SPECIAL_CHARS));
     UporabnikDB::updateAktivno($params);
+
+    if (isset($_GET["f"]) && $_GET["f"] == "p") {
+        header("Location:prodajalci");
+        exit;
+    }
+
     header("Location:adminpanel?id=" . $_GET['id']);
     exit;
 }
@@ -73,7 +79,9 @@ if (isset($_POST["id"]) && $_POST["id"] == -1 && isset($_POST["idVloga"]) && $_P
     }
 
     // stranka
-    $naslov = null; $idPosta = null; $telefon = null;
+    $naslov = null;
+    $idPosta = null;
+    $telefon = null;
     if (isset($_POST["naslov"]) && !empty($_POST["naslov"])) {
         $naslov = filter_input(INPUT_POST, 'naslov', FILTER_SANITIZE_SPECIAL_CHARS);
     }

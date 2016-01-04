@@ -21,7 +21,7 @@
                     <a href="customerpanel"><span><i class="fa fa-user fa-fw"></i> Upravljaj račun</span></a>
                 </li>
                 <li>
-                    <a href="shop"><span><i class="fa fa-laptop fa-fw"></i> Trgovina</span></a>
+                    <a href="store"><span><i class="fa fa-laptop fa-fw"></i> Trgovina</span></a>
                 </li>
                 <li>
                     <a href="#">

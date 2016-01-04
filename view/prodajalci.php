@@ -7,91 +7,99 @@
  */
 
 if (!isset($_SESSION["idUporabnik"])) {
-    header("Location:" . $_SERVER["SCRIPT_NAME"] . "/login");
+    header("Location:login");
     echo "Uporabnik ni prijavljen.";
 }
-
 ?>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li><a href="#">Pregled</a></li>
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="adminpanel.php">Upravljaj račun</a></li>
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="adminpanel.php?id=-1">Ustvari prodajalca</a></li>
-                <li class="active"><a href="prodajalci.php">Upravljaj s prodajalci</a></li>
+<!DOCTYPE html>
+<head>
+    <?php include 'includes/head.php' ?>
+    <title>Upravljaj s prodajalci - eTrgovina</title>
+</head>
 
-            </ul>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<body>
+<?php include 'includes/nav.php' ?>
+
+<div id="page-wrapper">
+
+    <div class="row">
+        <div class="col-lg-12">
             <h1 class="page-header">Upravljaj s prodajalci</h1>
 
-            <div class="col-md-8">
-                <?php
-                echo "<table>";
-                echo "<tr><th>ID</th><th>Ime</th><th>Priimek</th><th>email</th><th>Aktivno</th><th></th></tr>";
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <?php
+                    echo "<table class=\"table table-striped table-bordered table-hover\">";
+                    echo "<tr><th>ID</th><th>Ime</th><th>Priimek</th><th>e-mail</th><th>Aktivno</th><th>Upravljaj</th></tr>";
 
-                class TableRows extends RecursiveIteratorIterator
-                {
-                    function __construct($it)
+                    class TableRows extends RecursiveIteratorIterator
                     {
-                        parent::__construct($it, self::LEAVES_ONLY);
+                        function __construct($it)
+                        {
+                            parent::__construct($it, self::LEAVES_ONLY);
+                        }
+
+                        function current()
+                        {
+                            return parent::current();
+                        }
+
+                        function beginChildren()
+                        {
+                            echo "<tr>";
+                        }
+
+                        function endChildren()
+                        {
+                            echo "</tr>" . "\n";
+                        }
                     }
 
-                    function current()
-                    {
-                        return parent::current();
-                    }
+                    $result = UporabnikDB::getSellers();
 
-                    function beginChildren()
-                    {
-                        echo "<tr>";
-                    }
+                    foreach (new TableRows(new RecursiveArrayIterator($result)) as $k => $v) {
+                        if (is_numeric($k)) {
+                            continue;
+                        }
 
-                    function endChildren()
-                    {
-                        echo "</tr>" . "\n";
-                    }
-                }
-
-                $result = UporabnikDB::getSeller();
-
-                foreach (new TableRows(new RecursiveArrayIterator($result)) as $k => $v) {
-                    if (is_numeric($k)) {
-                        continue;
-                    }
-
-                    if ($k == "id") {
-                        echo "<td><a class='btn btn-default' href='adminpanel?id=$v'>Uredi</a></td>";
-                    } else
                         echo "<td>$v</td>";
 
-                }
+                        if ($k == "idUporabnik")
+                            $idUporabnika = $v;
 
-                echo "</table>";
-                ?>
+                        if ($k == "aktivno") {
+                            if ($v === '1') {
+                                $class = "btn btn-outline btn-danger btn-sm";
+                                $value = "Deaktiviraj";
+                                $aktivno = 0;
+                            } else {
+                                $class = "btn btn-outline btn-success btn-sm";
+                                $value = "Aktiviraj";
+                                $aktivno = 1;
+                            }
 
+                            echo "<td>
+                                    <a class='btn btn-default btn-sm' href='adminpanel?id=$idUporabnika'>Uredi</a> \t
+                                    <a class='$class' href='userpanel?aktivno=$aktivno&id=$idUporabnika&f=p'>$value</a>
+                                 </td>";
+                        }
+                    }
+                    echo "</table>";
+                    ?>
+
+                </div>
+                <!-- /.panel-body -->
             </div>
+            <!-- /.panel -->
+
         </div>
-
+        <!-- /.col-lg-12 -->
     </div>
-</div>
+    <!-- /.row -->
 
-<script>
-    function checkpassword() {
-        var pass1 = $('input[name=password]').val();
-        var pass2 = $('input[name=confirm]').val();
-        if (pass1 != '' && pass1 != pass2) {
-            alert("Gesli se ne ujemata.");
-            $('input[name=password]').val("");
-            $('input[name=confirm]').val("");
-            return false;
-        }
-        return true;
-    }
-</script>
+</div>
+<!-- /#page-wrapper -->
+
+<?php include 'includes/footer.php' ?>
+</body>
