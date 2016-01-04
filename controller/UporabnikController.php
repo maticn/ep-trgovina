@@ -18,6 +18,10 @@ class UporabnikController {
         echo ViewHelper::render("view/includes/layout.html");
     }
 
+    public static function poste() {
+        echo ViewHelper::render("view/shraniPoste.php");
+    }
+
     public static function adminPanel() {
         echo ViewHelper::render("view/adminpanel.php");
     }

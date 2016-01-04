@@ -79,13 +79,13 @@ if ($user["aktivno"] === '1') {
                         <div class="form-group">
                             <label>Ime</label>
                             <input class="form-control" <?php if ($mode != "create") echo "value=" . $user["ime"]; ?>
-                                   type="text" name="ime" required>
+                                   type="text" pattern="[A-zčžšČŽŠ]*" name="ime" required>
                         </div>
                         <div class="form-group">
                             <label>Priimek</label>
                             <input
                                 class="form-control" <?php if ($mode != "create") echo "value=" . $user["priimek"]; ?>
-                                type="text" name="priimek" required>
+                                type="text" pattern="[A-zčžšČŽŠ]*" name="priimek" required>
                         </div>
 
                         <?php

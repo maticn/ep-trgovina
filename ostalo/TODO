@@ -1,8 +1,7 @@
 Matic:
+    - nerelavantne linke v navigaciji zakodirej
     - registracija
     - povezava na gumba v headerju
-    - varno programiranje, validacija obrazcev (telefon, mail, geslo...) z regexi
-    - poštna številka = selection iz baze
     - beleženje logina v bazo
     - pošiljanje maila za aktivacijo računa
     - HTTPS redirect, certifikati

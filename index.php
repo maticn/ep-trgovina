@@ -21,6 +21,9 @@ $urls = [
     "checkLogin" => function () {
         UporabnikController::checkLogin();
     },
+    "shraniPoste" => function () {
+        UporabnikController::poste();
+    },
     "adminpanel" => function () {
         UporabnikController::adminPanel();
     },
@@ -50,7 +53,7 @@ $urls = [
         BooksController::delete();
     },
     "" => function () {
-        ViewHelper::redirect(BASE_URL . "login");
+        ViewHelper::redirect("login");
     },
 ];
 

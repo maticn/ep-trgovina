@@ -139,6 +139,8 @@ if (isset($_GET["manage"])) {
                     }
 
 
+                    $poste = PostaDB::getAll();
+
                     if ($mode !== "seznamStrank") {             // urejamo stranko ?>
                         <form action="userpanel" method="post">
                             <?php if ($mode === "urediAcc" || $mode === "edit" || $mode === "create") { ?>
@@ -147,13 +149,13 @@ if (isset($_GET["manage"])) {
                                     <label>Ime</label>
                                     <input
                                         class="form-control" <?php if ($mode != "create" && isset($result["ime"])) echo "value='" . $result["ime"] . "'"; ?>
-                                        type="text" name="ime" required>
+                                        type="text" pattern="[A-zčžšČŽŠ]*" name="ime" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Priimek</label>
                                     <input
                                         class="form-control" <?php if ($mode != "create" && isset($result["priimek"])) echo "value='" . $result["priimek"] . "'"; ?>
-                                        type="text" name="priimek" required>
+                                        type="text" pattern="[A-zčžšČŽŠ]*" name="priimek" required>
                                 </div>
 
                                 <?php if ($mode === "edit" || $mode === "create") { ?>
@@ -161,7 +163,7 @@ if (isset($_GET["manage"])) {
                                         <label>Telefon</label>
                                         <input
                                             class="form-control" <?php if ($mode != "create" && isset($result["telefon"])) echo "value='" . $result["telefon"] . "'"; ?>
-                                            type="text" name="telefon" required>
+                                            type="text" pattern="\d{3}.\d{3}.\d{3}" name="telefon" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Naslov</label>
@@ -171,9 +173,29 @@ if (isset($_GET["manage"])) {
                                     </div>
                                     <div class="form-group">
                                         <label>Pošta</label>
-                                        <input
-                                            class="form-control" <?php if ($mode != "create" && isset($result["idPosta"])) echo "value='" . $result["idPosta"] . "'"; ?>
-                                            type="text" name="idPosta" required>
+                                        <select class="form-control" id="idPosta" name="idPosta" required>
+                                            <?php
+                                            $trenPosta = 0;
+                                            if($mode != "create" && isset($result["idPosta"])) {
+                                                $trenPosta = $result["idPosta"];
+                                            }
+
+                                            foreach ($poste as $v) {
+                                                $postnaSt = $v["postnaSt"];
+                                                $izpis = $v["postnaSt"] . " " . $v["imePoste"];
+
+                                                if($trenPosta != 0) {
+                                                    if($postnaSt == $trenPosta) {
+                                                        echo "<option value=\"$postnaSt\" selected>$izpis</option>";
+                                                    } else {
+                                                        echo "<option value=\"$postnaSt\">$izpis</option>";
+                                                    }
+                                                } else {
+                                                    echo "<option value=\"$postnaSt\">$izpis</option>";
+                                                }
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
 
                                     <input type="hidden" name="editing" value="customer"/>

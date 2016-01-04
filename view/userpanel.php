@@ -53,8 +53,13 @@ if (isset($_POST["id"]) && $_POST["id"] != -1 && isset($_POST["idVloga"]) && $_P
         exit;
     } elseif ($_POST["idVloga"] === "3") {
         if (isset($_POST["editing"]) && $_POST["editing"] == "customer") {
-            header("Location:sellerpanel?id=$id");
-            exit;
+            if($_SESSION["idVloga"] == 1 || $_SESSION["idVloga"] == 2) {
+                header("Location:sellerpanel?manage");
+                exit;
+            } else {
+                header("Location:sellerpanel?id=$id");
+                exit;
+            }
         } else {
             header("Location:sellerpanel");
             exit;
