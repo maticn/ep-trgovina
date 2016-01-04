@@ -15,30 +15,26 @@ $path = isset($_SERVER["PATH_INFO"]) ? trim($_SERVER["PATH_INFO"], "/") : "";
 
 // ROUTER: defines mapping between URLS and controllers
 $urls = [
-    "layout" => function () {
-        UporabnikController::layout();
-    },
-
     "login" => function () {
-        UporabnikController::index();
-    },
-    "checkLogin" => function () {
         UporabnikController::login();
     },
+    "checkLogin" => function () {
+        UporabnikController::checkLogin();
+    },
     "adminpanel" => function () {
-        UporabnikController::edit();
+        UporabnikController::adminPanel();
+    },
+    "prodajalci" => function () {
+        UporabnikController::sellers();
     },
     "sellerpanel" => function () {
-        UporabnikController::editSeller();
+        UporabnikController::sellerPanel();
+    },
+    "customerpanel" => function () {
+        UporabnikController::customerPanel();
     },
     "userpanel" => function () {
         UporabnikController::editUser();
-    },
-    "prodajalci" => function () {
-        UporabnikController::activate();
-    },
-    "customerpanel" => function () {
-        UporabnikController::customer();
     },
     "izdelki" => function () {
         IzdelkiController::index();
@@ -46,25 +42,6 @@ $urls = [
     "store" => function () {
         IzdelkiController::index();
     },
-
-//    "view/login.php" => function () {
-//        UporabnikController::login();
-//    },
-//    "view/adminpanel.php" => function () {
-//        UporabnikController::edit();
-//    },
-//    "view/sellerpanel.php" => function () {
-//        UporabnikController::editSeller();
-//    },
-//    "view/userpanel.php" => function () {
-//        UporabnikController::editUser();
-//    },
-//    "view/prodajalci.php" => function () {
-//        UporabnikController::activate();
-//    },
-//    "view/customerpanel.php" => function () {
-//        UporabnikController::customer();
-//    },
 
     "books/add" => function () {
         BooksController::add();

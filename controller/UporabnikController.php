@@ -1,27 +1,32 @@
 <?php
 
 require_once("model/UporabnikDB.php");
+require_once("model/PostaDB.php");
 require_once("ViewHelper.php");
 
 class UporabnikController {
 
-    public static function index() {
+    public static function login() {
         echo ViewHelper::render("view/login.html");
+    }
+
+    public static function checkLogin() {
+        echo ViewHelper::render("view/login.php");
     }
 
     public static function layout() {
         echo ViewHelper::render("view/includes/layout.html");
     }
 
-    public static function login() {
-        echo ViewHelper::render("view/login.php");
-    }
-
-    public static function edit() {
+    public static function adminPanel() {
         echo ViewHelper::render("view/adminpanel.php");
     }
 
-    public static function editSeller() {
+    public static function sellers() {
+        echo ViewHelper::render("view/prodajalci.php");
+    }
+
+    public static function sellerPanel() {
         echo ViewHelper::render("view/sellerpanel.php");
     }
 
@@ -29,11 +34,7 @@ class UporabnikController {
         echo ViewHelper::render("view/userpanel.php");
     }
 
-    public static function activate() {
-        echo ViewHelper::render("view/prodajalci.php");
-    }
-
-    public static function customer() {
+    public static function customerPanel() {
         echo ViewHelper::render("view/customerpanel.php");
     }
 

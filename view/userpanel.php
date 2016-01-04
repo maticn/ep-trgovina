@@ -15,6 +15,9 @@ if (isset($_GET["aktivno"]) && isset($_GET["id"]) && $_GET["id"] != -1) {
     if (isset($_GET["f"]) && $_GET["f"] == "p") {
         header("Location:prodajalci");
         exit;
+    } else if (isset($_GET["f"]) && $_GET["f"] == "c") {
+        header("Location:sellerpanel?manage");
+        exit;
     }
 
     header("Location:adminpanel?id=" . $_GET['id']);

@@ -24,14 +24,14 @@ class PostaDB extends AbstractDB
 
     public static function get(array $params)
     {
-        $books = parent::query("SELECT postnaSt,imePoste"
+        $poste = parent::query("SELECT imePoste"
             . " FROM Posta"
             . " WHERE postnaSt = :postnaSt", $params);
 
-        if (count($books) == 1) {
-            return $books[0];
+        if (count($poste) == 1) {
+            return $poste[0];
         } else {
-            throw new InvalidArgumentException("No such book");
+            throw new InvalidArgumentException("Posta ne obstaja.");
         }
     }
 

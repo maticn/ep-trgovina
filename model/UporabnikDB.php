@@ -72,7 +72,7 @@ class UporabnikDB extends AbstractDB {
     }
 
     public static function getCustomers() {
-        return parent::query("SELECT idUporabnik, ime, priimek, email, aktivno, telefon, naslov, idPosta"
+        return parent::query("SELECT idUporabnik, ime, priimek, email, telefon, naslov, idPosta, aktivno"
             . " FROM Uporabnik"
             . " WHERE idVloga = 3");
     }
