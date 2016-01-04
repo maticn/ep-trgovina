@@ -10,6 +10,9 @@ if (!isset($_SESSION["idUporabnik"])) {
     header("Location:login");
     echo "Uporabnik ni prijavljen.";
 }
+if ($_SESSION["idVloga"] != 1) {
+    header("Location:store");
+}
 ?>
 
 <!DOCTYPE html>

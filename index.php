@@ -30,9 +30,6 @@ $urls = [
     "sellerpanel" => function () {
         UporabnikController::sellerPanel();
     },
-    "customerpanel" => function () {
-        UporabnikController::customerPanel();
-    },
     "userpanel" => function () {
         UporabnikController::editUser();
     },

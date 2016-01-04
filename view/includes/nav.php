@@ -1,10 +1,24 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
-        <a class="navbar-brand" href="shop">
+        <a class="navbar-brand" href="store">
             <div id="logo"></div>
         </a>
     </div>
     <!-- /.navbar-header -->
+
+    <?php
+    $manageUrl = "login";
+    if (isset($_SESSION["idUporabnik"])) {
+        $id = $_SESSION["idUporabnik"];
+        if ($_SESSION["idVloga"] == 1) {
+            $manageUrl = "adminpanel";
+        } else if ($_SESSION["idVloga"] == 2) {
+            $manageUrl = "sellerpanel";
+        } else if ($_SESSION["idVloga"] == 3) {
+            $manageUrl = "sellerpanel?id=$id";
+        }
+    }
+    ?>
 
     <section id="login">
         <ul class="nav navbar-top-links navbar-right">
@@ -18,7 +32,7 @@
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li>
-                    <a href="customerpanel"><span><i class="fa fa-user fa-fw"></i> Upravljaj račun</span></a>
+                    <a href="<?php echo $manageUrl; ?>"><span><i class="fa fa-user fa-fw"></i> Upravljaj račun</span></a>
                 </li>
                 <li>
                     <a href="store"><span><i class="fa fa-laptop fa-fw"></i> Trgovina</span></a>
@@ -50,8 +64,10 @@
                         <i class="fa fa-cubes fa-fw"></i> Upravljaj s produkti<span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a href="#">Pregled</a></li></li>
-                        <li><a href="#">Dodaj produkt</a></li></li>
+                        <li><a href="#">Pregled</a></li>
+                        </li>
+                        <li><a href="#">Dodaj produkt</a></li>
+                        </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>

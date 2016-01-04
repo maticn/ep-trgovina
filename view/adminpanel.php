@@ -99,17 +99,12 @@ if ($user["aktivno"] === '1') {
                         ?>
 
                         <hr>
-
-                        <?php
-                        if ($mode === "create")
-                            echo "
-                                <div class=\"form-group\">
-                                    <label>e-mail</label>
-                                    <input class=\"form-control\" type=\"email\" name=\"email\" required>
-                                </div>
-                            ";
-                        ?>
-
+                        <div class="form-group">
+                            <label>e-mail</label>
+                            <input
+                                class="form-control" <?php if ($mode != "create" && isset($user["email"])) echo "value='" . $user["email"] . "'"; ?>
+                                type="email" name="email" required>
+                        </div>
                         <div class="form-group">
                             <label>Novo geslo</label>
                             <input class="form-control" type="password" name="password">
@@ -119,22 +114,20 @@ if ($user["aktivno"] === '1') {
                             <input class="form-control" type="password" name="confirm">
                         </div>
 
-                        <hr>
-
                         <input type="hidden" name="idVloga" value="2"/>
 
                         <?php
                         if ($mode === "create") {
                             echo '	<input type="hidden" name="id" value=-1>
 				                    <div class="form-group">
-                                        <input type="submit" value="Ustvari novega prodajalca" class="btn btn-danger btn-block" name="submit" style="width: 50%; margin-left: auto; margin-right: auto;" onclick="checkpassword()">
+                                        <input type="submit" value="Ustvari novega prodajalca" class="btn btn-danger btn-block" name="submit" style="width: 50%; margin-left: auto; margin-right: auto;" onclick="return checkpassword()">
                                     </div>
 				                 ';
                         } else {
                             echo '	<input type="hidden" name="id" value=' . $id . '>
                                     <input type="hidden" value="manage" name="mode"/>
                                     <div class="form-group">
-                                        <input type="submit" value="Shrani" class="btn btn-danger btn-block" name="submit" style="width: 50%; margin-left: auto; margin-right: auto;" onclick=" return checkpassword()">
+                                        <input type="submit" value="Shrani" class="btn btn-danger btn-block" name="submit" style="width: 50%; margin-left: auto; margin-right: auto;" onclick="return checkpassword()">
                                     </div>
                                  ';
                         }

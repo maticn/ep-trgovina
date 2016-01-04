@@ -48,7 +48,7 @@ class UporabnikDB extends AbstractDB {
     }
 
     public static function get(array $id) {
-        $users = parent::query("SELECT ime, priimek, email, geslo, idVloga, telefon, naslov, datumRegistracije, aktivno"
+        $users = parent::query("SELECT ime, priimek, email, geslo, idVloga, telefon, naslov, idPosta, datumRegistracije, aktivno"
             . " FROM Uporabnik"
             . " WHERE idUporabnik = :id", $id);
 

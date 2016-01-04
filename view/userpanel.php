@@ -41,7 +41,7 @@ if (isset($_POST["id"]) && $_POST["id"] != -1 && isset($_POST["idVloga"]) && $_P
     }
 
     if (isset($_POST["naslov"]) && !empty($_POST["naslov"]) && isset($_POST["idPosta"]) && !empty($_POST["idPosta"]) && isset($_POST["telefon"]) && !empty($_POST["telefon"])) {
-        $params = array("id" => $id, "naslov" => filter_input(INPUT_POST, 'naslov', FILTER_SANITIZE_SPECIAL_CHARS), "idPosta" => filter_input(INPUT_POST, 'idPosta', FILTER_SANITIZE_SPECIAL_CHARS), "telefon" => filter_input(INPUT_POST, 'telefon', FILTER_SANITIZE_SPECIAL_CHARS));
+        $params = array("idUporabnik" => $id, "naslov" => filter_input(INPUT_POST, 'naslov', FILTER_SANITIZE_SPECIAL_CHARS), "idPosta" => filter_input(INPUT_POST, 'idPosta', FILTER_SANITIZE_SPECIAL_CHARS), "telefon" => filter_input(INPUT_POST, 'telefon', FILTER_SANITIZE_SPECIAL_CHARS));
         UporabnikDB::updateStranka($params);
     }
 
@@ -53,7 +53,7 @@ if (isset($_POST["id"]) && $_POST["id"] != -1 && isset($_POST["idVloga"]) && $_P
         exit;
     } elseif ($_POST["idVloga"] === "3") {
         if (isset($_POST["editing"]) && $_POST["editing"] == "customer") {
-            header("Location:sellerpanel?manage");
+            header("Location:sellerpanel?id=$id");
             exit;
         } else {
             header("Location:sellerpanel");
@@ -113,6 +113,6 @@ if (isset($_POST["id"]) && $_POST["id"] == -1 && isset($_POST["idVloga"]) && $_P
 }
 
 // nismo bili v nobenem if-u, preusmerimo na trgovino
-header("Location:shop");
+header("Location:store");
 
 ?>

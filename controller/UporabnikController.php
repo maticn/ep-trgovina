@@ -34,10 +34,6 @@ class UporabnikController {
         echo ViewHelper::render("view/userpanel.php");
     }
 
-    public static function customerPanel() {
-        echo ViewHelper::render("view/customerpanel.php");
-    }
-
     public static function add() {
         $form = new BooksInsertForm("add_form");
 
