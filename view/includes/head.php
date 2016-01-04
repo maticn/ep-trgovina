@@ -8,14 +8,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 <!-- MetisMenu CSS -->
-<link href="../static/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+<link href="static/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="../static/css/sb-admin-2.css" rel="stylesheet">
-<link href="../static/css/custom.css" rel="stylesheet">
+<link href="static/css/sb-admin-2.css" rel="stylesheet">
+<link href="static/css/custom.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
