@@ -15,7 +15,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="../static/metisMenu/dist/metisMenu.min.js"></script>
+<script src="static/metisMenu/dist/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="../static/js/sb-admin-2.js"></script>
+<script src="static/js/sb-admin-2.js"></script>
