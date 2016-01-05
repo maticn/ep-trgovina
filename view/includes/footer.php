@@ -14,10 +14,10 @@
 
 
 <!-- Metis Menu Plugin JavaScript -->
+<script src="static/js/jquery.js"></script>
 <script src="static/metisMenu/dist/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="static/js/sb-admin-2.js"></script>
 
-<script src="static/js/jquery.js"></script>
 <script src="static/js/bootstrap.js"></script>
