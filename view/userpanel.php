@@ -108,7 +108,10 @@ if (isset($_POST["id"]) && $_POST["id"] == -1 && isset($_POST["idVloga"]) && $_P
     );
 
 
-    if ($_POST["idVloga"] === "2") {                    // prodajalec
+    if($_POST["registracija"] === "1") {                // registracija uporabnika
+        header("Location:login");
+        exit;
+    } elseif ($_POST["idVloga"] === "2") {              // prodajalec
         header("Location:prodajalci");
         exit;
     } elseif ($_POST["idVloga"] === "3") {              // stranka
@@ -119,5 +122,3 @@ if (isset($_POST["id"]) && $_POST["id"] == -1 && isset($_POST["idVloga"]) && $_P
 
 // nismo bili v nobenem if-u, preusmerimo na trgovino
 header("Location:store");
-
-?>

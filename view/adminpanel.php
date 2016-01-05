@@ -8,11 +8,13 @@
 
 if (!isset($_SESSION["idUporabnik"])) {
     header("Location:login");
+    exit;
 }
 if ($_SESSION["idVloga"] != 1) {
 //    header("refresh:5;url=shop");
 //    echo "Nimate pravic administratorja.";
     header("Location:store");
+    exit;
 }
 ?>
 

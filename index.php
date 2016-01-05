@@ -24,6 +24,9 @@ $urls = [
     "logout" => function () {
         UporabnikController::logout();
     },
+    "register" => function () {
+        UporabnikController::register();
+    },
     "shraniPoste" => function () {
         UporabnikController::poste();
     },

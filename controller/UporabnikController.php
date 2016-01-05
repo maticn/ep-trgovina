@@ -19,6 +19,15 @@ class UporabnikController {
         header("Location:store");
     }
 
+    public static function register() {
+        if (isset($_SESSION["idUporabnik"])) {
+            header("Location:store");
+            exit;
+        } else {
+            header("Location:sellerpanel?id=-1");
+        }
+    }
+
     public static function layout() {
         echo ViewHelper::render("view/includes/layout.html");
     }

@@ -1,5 +1,4 @@
 Matic:
-    - registracija
     - beleženje logina v bazo
     - pošiljanje maila za aktivacijo računa
     - HTTPS redirect, certifikati

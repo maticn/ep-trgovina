@@ -6,12 +6,19 @@
  * Time: 19:53
  */
 
-if (!isset($_SESSION["idUporabnik"])) {
-    header("Location:login");
+$registracija = 0;
+if (!(!isset($_SESSION["idUporabnik"]) && isset($_GET["id"]) && $_GET["id"] != null && $_GET["id"] == -1)) {
+    if (!isset($_SESSION["idUporabnik"])) {
+        header("Location:login");
+        exit;
+    }
+} else {
+    $registracija = 1;
 }
-if ($_SESSION["idVloga"] == 3) {
+if (isset($_SESSION["idVloga"]) && $_SESSION["idVloga"] == 3) {
     if (!(isset($_GET["id"]) && $_GET["id"] != null && $_GET["id"] == $_SESSION["idUporabnik"])) {
         header("Location:store");
+        exit;
     }
 }
 ?>
@@ -176,7 +183,7 @@ if (isset($_GET["manage"])) {
                                         <select class="form-control" id="idPosta" name="idPosta" required>
                                             <?php
                                             $trenPosta = 0;
-                                            if($mode != "create" && isset($result["idPosta"])) {
+                                            if ($mode != "create" && isset($result["idPosta"])) {
                                                 $trenPosta = $result["idPosta"];
                                             }
 
@@ -184,8 +191,8 @@ if (isset($_GET["manage"])) {
                                                 $postnaSt = $v["postnaSt"];
                                                 $izpis = $v["postnaSt"] . " " . $v["imePoste"];
 
-                                                if($trenPosta != 0) {
-                                                    if($postnaSt == $trenPosta) {
+                                                if ($trenPosta != 0) {
+                                                    if ($postnaSt == $trenPosta) {
                                                         echo "<option value=\"$postnaSt\" selected>$izpis</option>";
                                                     } else {
                                                         echo "<option value=\"$postnaSt\">$izpis</option>";
@@ -200,6 +207,8 @@ if (isset($_GET["manage"])) {
 
                                     <input type="hidden" name="editing" value="customer"/>
                                     <input type="hidden" name="idVloga" value="3"/>
+                                    <input type="hidden" name="registracija"
+                                           value="<?php if ($registracija == 1) echo "1"; else echo "0"; ?>"/>
                                 <?php }
                             } // konec urejanja ali dodajanja stranke?>
 
