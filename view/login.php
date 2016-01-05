@@ -22,10 +22,14 @@ try {
         $_SESSION["idUporabnik"] = $result["idUporabnik"];
         $_SESSION["idVloga"] = $result["idVloga"];
 
-        if ($result["idVloga"] === "1")
+        if ($result["idVloga"] === "1") {
+            PrijavaLogDB::insert(["idUporabnik" => $result["idUporabnik"]]);
             header("Location:adminpanel");
-        elseif ($result["idVloga"] === "2")
+        }
+        elseif ($result["idVloga"] === "2") {
+            PrijavaLogDB::insert(["idUporabnik" => $result["idUporabnik"]]);
             header("Location:sellerpanel");
+        }
         else
             header("Location:store");
         exit;

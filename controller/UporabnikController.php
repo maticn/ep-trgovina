@@ -1,6 +1,7 @@
 <?php
 
 require_once("model/UporabnikDB.php");
+require_once("model/PrijavaLogDB.php");
 require_once("model/PostaDB.php");
 require_once("ViewHelper.php");
 
