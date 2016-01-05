@@ -16,8 +16,8 @@ try {
         exit;
     }
 
-    //if (password_verify($_POST["password"], $result["geslo"])) {
-    if ($result["geslo"] === SHA1($_POST["password"])) {
+    if (password_verify($_POST["password"], $result["geslo"])) {
+    //if ($result["geslo"] === SHA1($_POST["password"])) {
 
         $_SESSION["idUporabnik"] = $result["idUporabnik"];
         $_SESSION["idVloga"] = $result["idVloga"];
@@ -36,7 +36,7 @@ try {
 
     } else {
         header("refresh:5;url=login");
-        echo "Napacno geslo.";
+        echo "Napacno geslo. baza: " . $result["geslo"] . " Vtipkano: " . $_POST["password"];
         exit;
     }
 } catch (InvalidArgumentException $e) {

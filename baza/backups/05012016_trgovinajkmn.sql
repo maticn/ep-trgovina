@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 04, 2016 at 11:46 PM
+-- Generation Time: Jan 05, 2016 at 06:58 PM
 -- Server version: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `mydb`
+-- Database: `trgovinajkmn`
 --
 
 -- --------------------------------------------------------
@@ -33,14 +33,7 @@ CREATE TABLE IF NOT EXISTS `Izdelek` (
   `cena` double NOT NULL,
   `aktivno` tinyint(1) NOT NULL,
   PRIMARY KEY (`idIzdelek`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `Izdelek`
---
-
-INSERT INTO `Izdelek` (`idIzdelek`, `ime`, `opis`, `cena`, `aktivno`) VALUES
-(1, 'kladivo', 'Orodje za zabijanje žebljev.', 25.69, 1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -59,15 +52,7 @@ CREATE TABLE IF NOT EXISTS `Narocilo` (
   PRIMARY KEY (`idNarocilo`),
   KEY `fk_Narocilo_Uporabnik1_idx` (`idStranke`),
   KEY `fk_Narocilo_Uporabnik2_idx` (`idProdajalca`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `Narocilo`
---
-
-INSERT INTO `Narocilo` (`idNarocilo`, `cenaSkupaj`, `status`, `idStranke`, `datumOddaje`, `idProdajalca`, `datumPotrditve`) VALUES
-(3, 50.89, 1, 1, '2015-12-29 18:38:36', 1, '2015-12-15 15:57:21'),
-(4, 50.89, 1, 1, '2015-12-29 18:46:20', NULL, NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -589,13 +574,6 @@ CREATE TABLE IF NOT EXISTS `PostavkaNarocila` (
   KEY `fk_PostavkaNarocila_Izdelek1_idx` (`idIzdelek`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `PostavkaNarocila`
---
-
-INSERT INTO `PostavkaNarocila` (`idNarocilo`, `idIzdelek`, `kolicina`) VALUES
-(3, 1, 8);
-
 -- --------------------------------------------------------
 
 --
@@ -608,7 +586,14 @@ CREATE TABLE IF NOT EXISTS `PrijavaLog` (
   `casPrijave` datetime DEFAULT NULL,
   PRIMARY KEY (`idPrijavaLog`),
   KEY `fk_PrijavaLog_Uporabnik1_idx` (`idUporabnik`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `PrijavaLog`
+--
+
+INSERT INTO `PrijavaLog` (`idPrijavaLog`, `idUporabnik`, `casPrijave`) VALUES
+(1, 1, '2016-01-05 18:44:41');
 
 -- --------------------------------------------------------
 
@@ -622,14 +607,7 @@ CREATE TABLE IF NOT EXISTS `SlikaIzdelka` (
   `slika` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`idSlikaIzdelka`),
   KEY `fk_SlikaIzdelka_Izdelek1_idx` (`idIzdelek`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `SlikaIzdelka`
---
-
-INSERT INTO `SlikaIzdelka` (`idSlikaIzdelka`, `idIzdelek`, `slika`) VALUES
-(2, 1, 'pot do slike1');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -642,7 +620,7 @@ CREATE TABLE IF NOT EXISTS `Uporabnik` (
   `ime` varchar(45) NOT NULL,
   `priimek` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `geslo` varchar(45) NOT NULL,
+  `geslo` varchar(255) NOT NULL,
   `idVloga` int(11) NOT NULL,
   `telefon` varchar(45) DEFAULT NULL,
   `naslov` varchar(45) DEFAULT NULL,
@@ -652,20 +630,21 @@ CREATE TABLE IF NOT EXISTS `Uporabnik` (
   PRIMARY KEY (`idUporabnik`),
   UNIQUE KEY `idUporabnik_UNIQUE` (`idUporabnik`),
   KEY `fk_Uporabnik_Posta_idx` (`idPosta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `Uporabnik`
 --
 
 INSERT INTO `Uporabnik` (`idUporabnik`, `ime`, `priimek`, `email`, `geslo`, `idVloga`, `telefon`, `naslov`, `idPosta`, `datumRegistracije`, `aktivno`) VALUES
-(1, 'Administrator', 'Veliki', 'info@makro.si', '0c6ba03885f3aae765fbf20f07f514a44dbda30a', 1, '041 000 000', '', NULL, '2015-12-15 15:57:21', 1),
-(2, 'Prodajalec', 'Miha', 'prodajalec@gmail.com', '0c6ba03885f3aae765fbf20f07f514a44dbda30a', 2, '041 000 000', '', NULL, '2015-12-30 20:20:10', 1),
-(3, 'Stranka', 'Bogdan', 'stranka@gmail.com', '0c6ba03885f3aae765fbf20f07f514a44dbda30a', 3, '041 000 000', 'Smrečnikova 42', 8282, '2016-01-03 20:00:02', 1),
-(30, 'Prodajalka', 'Špela', 'spela@gmail.com', '0c6ba03885f3aae765fbf20f07f514a44dbda30a', 2, NULL, NULL, NULL, '2016-01-04 22:28:42', 0),
-(31, 'Prodajalec', 'Tone', 'tone@gmail.com', 'b357a5de121b582fd1798c4c0217832d6c99b6b9', 2, NULL, NULL, NULL, '2016-01-04 22:31:46', 0),
-(32, 'Stranka', 'Barbara', 'barbara@gmail.com', '0c6ba03885f3aae765fbf20f07f514a44dbda30a', 3, '051 000 000', 'Kotnikova 17', 1211, '2016-01-04 22:32:43', 1),
-(33, 'Stranka', 'Andraž', 'andraz@gmail.com', '0c6ba03885f3aae765fbf20f07f514a44dbda30a', 3, '041 000 000', 'Budgenška 9', 1000, '2016-01-04 22:40:06', 0);
+(1, 'Administrator', 'Veliki', 'info@makro.si', '$2y$10$OgKbpgzAcFRO.OhlMe.jo.v0aWOp5HSj5hoi3xI8Du1QnG39FWNpm', 1, '', NULL, NULL, '2016-01-05 18:42:00', 1),
+(2, 'Prodajalec', 'Miha', 'prodajalec@gmail.com', '$2y$10$rF1Q7uD.MD4E.jrd5WKTVOdfVARu/8FBQh6nc4.hSSojZfroYxtVu', 2, NULL, NULL, NULL, '2016-01-05 18:45:37', 1),
+(3, 'Stranka', 'Bogdan', 'stranka@gmail.com', '$2y$10$MBys7fo9flow/NJSpVRyseQI9lfc4Svz/z//6rlAkicnW/2Nl5g92', 3, '041 000 000', 'Brusnice 1a', 8000, '2016-01-05 18:48:03', 1),
+(4, 'Prodajalka', 'Špela', 'spela@gmail.com', '$2y$10$uOcU4a8JSF/ixvh1Ss8GfevAh7BPmHurzVXtU/BGHQINk02uxaBIe', 2, NULL, NULL, NULL, '2016-01-05 18:48:26', 1),
+(5, 'Prodajalec', 'Boltažar', 'boltazar@gmail.com', '$2y$10$Cfy.24GKIkcmsXBPWxCZIevRmoIp5qP4V2vDjmRWq7ptJv6Pe49Qu', 2, NULL, NULL, NULL, '2016-01-05 18:48:49', 0),
+(6, 'Stranka', 'Janez', 'janez@gmail.com', '$2y$10$LRD3FxR2TsvQCDCz/jDZpuoGOAi6JosOwpTLx1CEjcKqZ2aay.qEm', 3, '031 000 000', 'Grmada 9', 1310, '2016-01-05 18:49:52', 0),
+(7, 'Stranka', 'Pavla', 'pavla@gmail.com', '$2y$10$xZs530xhn5Y0ARHZrhJV0O2xasDaYu1oQxsUA./KrX/zCjU62AQfG', 3, '051 942 618', 'Mengeš 45', 1351, '2016-01-05 18:51:27', 0),
+(8, 'Stranka', 'zEmailom', 'matic.internet@gmail.com', '$2y$10$4iRmzf9Oxwg6XxeUSNVLa.4RiK37N14SRjb54JpQKO.VlSYsSCOE2', 3, '090 000 000', 'Hajdrihova 25', 1000, '2016-01-05 18:57:34', 1);
 
 --
 -- Constraints for dumped tables
@@ -682,15 +661,15 @@ ALTER TABLE `Narocilo`
 -- Constraints for table `OcenaIzdelka`
 --
 ALTER TABLE `OcenaIzdelka`
-  ADD CONSTRAINT `fk_OcenaIzdelka_Izdelek1` FOREIGN KEY (`idIzdelek`) REFERENCES `Izdelek` (`idIzdelek`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_OcenaIzdelka_Uporabnik1` FOREIGN KEY (`idUporabnik`) REFERENCES `Uporabnik` (`idUporabnik`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_OcenaIzdelka_Uporabnik1` FOREIGN KEY (`idUporabnik`) REFERENCES `Uporabnik` (`idUporabnik`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_OcenaIzdelka_Izdelek1` FOREIGN KEY (`idIzdelek`) REFERENCES `Izdelek` (`idIzdelek`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `PostavkaNarocila`
 --
 ALTER TABLE `PostavkaNarocila`
-  ADD CONSTRAINT `fk_PostavkaNarocila_Izdelek1` FOREIGN KEY (`idIzdelek`) REFERENCES `Izdelek` (`idIzdelek`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_PostavkaNarocila_Narocilo1` FOREIGN KEY (`idNarocilo`) REFERENCES `Narocilo` (`idNarocilo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_PostavkaNarocila_Narocilo1` FOREIGN KEY (`idNarocilo`) REFERENCES `Narocilo` (`idNarocilo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_PostavkaNarocila_Izdelek1` FOREIGN KEY (`idIzdelek`) REFERENCES `Izdelek` (`idIzdelek`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `PrijavaLog`

@@ -2,16 +2,16 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-DROP SCHEMA IF EXISTS `mydb` ;
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `mydb` ;
+DROP SCHEMA IF EXISTS `trgovinajkmn` ;
+CREATE SCHEMA IF NOT EXISTS `trgovinajkmn` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `trgovinajkmn` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Posta`
+-- Table `trgovinajkmn`.`Posta`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Posta` ;
+DROP TABLE IF EXISTS `trgovinajkmn`.`Posta` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Posta` (
+CREATE TABLE IF NOT EXISTS `trgovinajkmn`.`Posta` (
   `postnaSt` INT NOT NULL,
   `imePoste` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`postnaSt`))
@@ -19,16 +19,16 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Uporabnik`
+-- Table `trgovinajkmn`.`Uporabnik`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Uporabnik` ;
+DROP TABLE IF EXISTS `trgovinajkmn`.`Uporabnik` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Uporabnik` (
+CREATE TABLE IF NOT EXISTS `trgovinajkmn`.`Uporabnik` (
   `idUporabnik` INT(11) NOT NULL AUTO_INCREMENT,
   `ime` VARCHAR(45) NOT NULL,
   `priimek` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `geslo` VARCHAR(45) NOT NULL,
+  `geslo` VARCHAR(255) NOT NULL,
   `idVloga` INT NOT NULL,
   `telefon` VARCHAR(45) NULL,
   `naslov` VARCHAR(45) NULL,
@@ -40,18 +40,18 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Uporabnik` (
   INDEX `fk_Uporabnik_Posta_idx` (`idPosta` ASC),
   CONSTRAINT `fk_Uporabnik_Posta`
     FOREIGN KEY (`idPosta`)
-    REFERENCES `mydb`.`Posta` (`postnaSt`)
+    REFERENCES `trgovinajkmn`.`Posta` (`postnaSt`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Narocilo`
+-- Table `trgovinajkmn`.`Narocilo`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Narocilo` ;
+DROP TABLE IF EXISTS `trgovinajkmn`.`Narocilo` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Narocilo` (
+CREATE TABLE IF NOT EXISTS `trgovinajkmn`.`Narocilo` (
   `idNarocilo` INT NOT NULL AUTO_INCREMENT,
   `cenaSkupaj` DOUBLE NOT NULL,
   `status` INT NOT NULL,
@@ -64,23 +64,23 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Narocilo` (
   INDEX `fk_Narocilo_Uporabnik2_idx` (`idProdajalca` ASC),
   CONSTRAINT `fk_Narocilo_Uporabnik1`
     FOREIGN KEY (`idStranke`)
-    REFERENCES `mydb`.`Uporabnik` (`idUporabnik`)
+    REFERENCES `trgovinajkmn`.`Uporabnik` (`idUporabnik`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Narocilo_Uporabnik2`
     FOREIGN KEY (`idProdajalca`)
-    REFERENCES `mydb`.`Uporabnik` (`idUporabnik`)
+    REFERENCES `trgovinajkmn`.`Uporabnik` (`idUporabnik`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Izdelek`
+-- Table `trgovinajkmn`.`Izdelek`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Izdelek` ;
+DROP TABLE IF EXISTS `trgovinajkmn`.`Izdelek` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Izdelek` (
+CREATE TABLE IF NOT EXISTS `trgovinajkmn`.`Izdelek` (
   `idIzdelek` INT NOT NULL AUTO_INCREMENT,
   `ime` VARCHAR(45) NOT NULL,
   `opis` VARCHAR(256) NOT NULL,
@@ -91,11 +91,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`PrijavaLog`
+-- Table `trgovinajkmn`.`PrijavaLog`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`PrijavaLog` ;
+DROP TABLE IF EXISTS `trgovinajkmn`.`PrijavaLog` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`PrijavaLog` (
+CREATE TABLE IF NOT EXISTS `trgovinajkmn`.`PrijavaLog` (
   `idPrijavaLog` INT NOT NULL AUTO_INCREMENT,
   `idUporabnik` INT(11) NOT NULL,
   `casPrijave` DATETIME NULL,
@@ -103,18 +103,18 @@ CREATE TABLE IF NOT EXISTS `mydb`.`PrijavaLog` (
   INDEX `fk_PrijavaLog_Uporabnik1_idx` (`idUporabnik` ASC),
   CONSTRAINT `fk_PrijavaLog_Uporabnik1`
     FOREIGN KEY (`idUporabnik`)
-    REFERENCES `mydb`.`Uporabnik` (`idUporabnik`)
+    REFERENCES `trgovinajkmn`.`Uporabnik` (`idUporabnik`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`OcenaIzdelka`
+-- Table `trgovinajkmn`.`OcenaIzdelka`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`OcenaIzdelka` ;
+DROP TABLE IF EXISTS `trgovinajkmn`.`OcenaIzdelka` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`OcenaIzdelka` (
+CREATE TABLE IF NOT EXISTS `trgovinajkmn`.`OcenaIzdelka` (
   `idUporabnik` INT(11) NOT NULL,
   `idIzdelek` INT NOT NULL,
   `ocena` INT NOT NULL,
@@ -123,23 +123,23 @@ CREATE TABLE IF NOT EXISTS `mydb`.`OcenaIzdelka` (
   INDEX `fk_OcenaIzdelka_Izdelek1_idx` (`idIzdelek` ASC),
   CONSTRAINT `fk_OcenaIzdelka_Uporabnik1`
     FOREIGN KEY (`idUporabnik`)
-    REFERENCES `mydb`.`Uporabnik` (`idUporabnik`)
+    REFERENCES `trgovinajkmn`.`Uporabnik` (`idUporabnik`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_OcenaIzdelka_Izdelek1`
     FOREIGN KEY (`idIzdelek`)
-    REFERENCES `mydb`.`Izdelek` (`idIzdelek`)
+    REFERENCES `trgovinajkmn`.`Izdelek` (`idIzdelek`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`SlikaIzdelka`
+-- Table `trgovinajkmn`.`SlikaIzdelka`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`SlikaIzdelka` ;
+DROP TABLE IF EXISTS `trgovinajkmn`.`SlikaIzdelka` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`SlikaIzdelka` (
+CREATE TABLE IF NOT EXISTS `trgovinajkmn`.`SlikaIzdelka` (
   `idSlikaIzdelka` INT NOT NULL AUTO_INCREMENT,
   `idIzdelek` INT NOT NULL,
   `slika` VARCHAR(256) NULL,
@@ -147,18 +147,18 @@ CREATE TABLE IF NOT EXISTS `mydb`.`SlikaIzdelka` (
   INDEX `fk_SlikaIzdelka_Izdelek1_idx` (`idIzdelek` ASC),
   CONSTRAINT `fk_SlikaIzdelka_Izdelek1`
     FOREIGN KEY (`idIzdelek`)
-    REFERENCES `mydb`.`Izdelek` (`idIzdelek`)
+    REFERENCES `trgovinajkmn`.`Izdelek` (`idIzdelek`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`PostavkaNarocila`
+-- Table `trgovinajkmn`.`PostavkaNarocila`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`PostavkaNarocila` ;
+DROP TABLE IF EXISTS `trgovinajkmn`.`PostavkaNarocila` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`PostavkaNarocila` (
+CREATE TABLE IF NOT EXISTS `trgovinajkmn`.`PostavkaNarocila` (
   `idNarocilo` INT NOT NULL,
   `idIzdelek` INT NOT NULL,
   `kolicina` INT NULL,
@@ -167,12 +167,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`PostavkaNarocila` (
   INDEX `fk_PostavkaNarocila_Izdelek1_idx` (`idIzdelek` ASC),
   CONSTRAINT `fk_PostavkaNarocila_Narocilo1`
     FOREIGN KEY (`idNarocilo`)
-    REFERENCES `mydb`.`Narocilo` (`idNarocilo`)
+    REFERENCES `trgovinajkmn`.`Narocilo` (`idNarocilo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_PostavkaNarocila_Izdelek1`
     FOREIGN KEY (`idIzdelek`)
-    REFERENCES `mydb`.`Izdelek` (`idIzdelek`)
+    REFERENCES `trgovinajkmn`.`Izdelek` (`idIzdelek`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

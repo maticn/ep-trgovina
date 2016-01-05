@@ -178,7 +178,7 @@ if (isset($_GET["manage"])) {
                                         <label>Telefon</label>
                                         <input
                                             class="form-control" <?php if ($mode != "create" && isset($result["telefon"])) echo "value='" . $result["telefon"] . "'"; ?>
-                                            type="text" pattern="\d{3}.\d{3}.\d{3}" name="telefon" required>
+                                            type="text" pattern="\d{3} \d{3} \d{3}" name="telefon" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Naslov</label>

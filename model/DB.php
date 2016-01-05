@@ -5,7 +5,7 @@ class DBInit {
     private static $host = "localhost";
     private static $user = "root";
     private static $password = "ep";
-    private static $schema = "mydb";
+    private static $schema = "trgovinajkmn";
     private static $instance = null;
 
     private function __construct() {
