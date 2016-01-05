@@ -7,7 +7,7 @@ session_start();
 require_once("controller/IzdelkiController.php");
 require_once("controller/UporabnikController.php");
 
-define("BASE_URL", $_SERVER["SCRIPT_NAME"] . "/");
+define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"] , "index.php"));
 define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
 define("CSS_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/css/");
 
@@ -53,6 +53,9 @@ $urls = [
     },
     "store" => function () {
         IzdelkiController::index();
+    },
+    "store/oceni" => function () {
+        IzdelkiController::oceni();
     },
     "store/cart" => function(){
         IzdelkiController::cart();

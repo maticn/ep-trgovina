@@ -24,15 +24,18 @@ class OcenaIzdelkaDB extends AbstractDB
 
     public static function get(array $params)
     {
-        $books = parent::query("SELECT idUporabnik, idIzdelek, ocena"
-            . " FROM OcenaIzdelka"
-            . " WHERE idIzdelek = :idIzdelek", $params);
+        return parent::query("SELECT u.ime, o.idUporabnik, o.idIzdelek, o.ocena"
+            . " FROM OcenaIzdelka o, Uporabnik u"
+            . " WHERE o.idIzdelek = :idIzdelek AND u.idUporabnik = o.idUporabnik", $params);
 
-        if (count($books) == 1) {
-            return $books[0];
-        } else {
-            throw new InvalidArgumentException("No such book");
-        }
+    }
+
+    public static function insertOrUpdate(array $params)
+    {
+        return parent::modify("INSERT INTO OcenaIzdelka (idUporabnik, idIzdelek, ocena) "
+            . "VALUES (:idUporabnik, :idIzdelek, :ocena)"
+            . "ON DUPLICATE KEY UPDATE ocena=:ocena", $params);
+
     }
 
     public static function getAll()
