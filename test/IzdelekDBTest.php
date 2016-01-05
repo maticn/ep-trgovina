@@ -21,7 +21,7 @@ require 'model/IzdelekDB.php';
 
 //var_dump(IzdelekDB::get(
 //    [
-//        "id" => "1"
+//        "id" => "2"
 //    ]
 //));
 

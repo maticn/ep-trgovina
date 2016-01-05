@@ -51,7 +51,7 @@
                     </p>
                 </div>
             </div>
-            <div class="well">
+            <div class="well" style="min-height: 150px">
                 <div class="col-md-9 col-lg-9 col-sm-9">
                     <strong>Ocene</strong>
                 </div>
@@ -65,7 +65,7 @@
                                     <option value="<?= $i ?>"><?= $i ?></option>
                                 <?php endforeach ?>
                             </select>
-                            <input type="hidden" name="id" value="<?= $id ?>">
+                            <input type="hidden" name="id" value="<?= $izdelek["idIzdelek"] ?>">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit">Oceni</button>
                               </span>

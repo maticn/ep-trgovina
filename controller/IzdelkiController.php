@@ -15,8 +15,7 @@ class IzdelkiController
         if ($data["id"]) {
             echo ViewHelper::render("view/izdelek-detail.php", [
                 "izdelek" => IzdelekDB::get($data),
-                "ocene" => OcenaIzdelkaDB::get(["idIzdelek" => $data["id"]]),
-                "id" => $data["id"]
+                "ocene" => OcenaIzdelkaDB::get(["idIzdelek" => $data["id"]])
             ]);
         } else {
             echo ViewHelper::render("view/izdelek-list.php", [

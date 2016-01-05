@@ -6,6 +6,7 @@ session_start();
 //require_once("controller/BooksController.php");
 require_once("controller/IzdelkiController.php");
 require_once("controller/UporabnikController.php");
+require_once("controller/ProductPanelController.php");
 
 define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"] , "index.php"));
 define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
@@ -59,6 +60,9 @@ $urls = [
     },
     "store/cart" => function(){
         IzdelkiController::cart();
+    },
+    "addproduct" => function(){
+        ProductPanelController::add();
     },
     "" => function () {
         ViewHelper::redirect("store");

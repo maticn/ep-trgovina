@@ -215,3 +215,8 @@
 .btn-breadcrumb .btn.btn-default:hover:not(:last-child):before {
     border-left: 10px solid #adadad;
 }
+/* Form */
+form.form-qf2 .label {
+    color: black;
+    font-size: 14px;
+}

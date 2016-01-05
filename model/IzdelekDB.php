@@ -24,7 +24,7 @@ class IzdelekDB extends AbstractDB
 
     public static function get(array $params)
     {
-        $izdelki = parent::query("SELECT i.ime, i.opis, i.cena, i.aktivno, AVG(o.ocena) AS avg_ocena, "
+        $izdelki = parent::query("SELECT i.idIzdelek, i.ime, i.opis, i.cena, i.aktivno, AVG(o.ocena) AS avg_ocena, "
             . "COUNT(o.ocena) AS count_ocena"
             . " FROM Izdelek i, OcenaIzdelka o"
             . " WHERE i.idIzdelek = :id AND o.idIzdelek = i.idIzdelek", $params);
@@ -38,10 +38,12 @@ class IzdelekDB extends AbstractDB
 
     public static function getAll()
     {
+
+
         return parent::query("SELECT i.idIzdelek, i.ime, i.opis, i.cena, i.aktivno, AVG(o.ocena) AS avg_ocena, "
             . "COUNT(o.ocena) AS count_ocena"
-            . " FROM Izdelek i, OcenaIzdelka o"
-            . " WHERE o.idIzdelek = i.idIzdelek");
+            . " FROM Izdelek i  LEFT JOIN OcenaIzdelka o"
+            . " ON i.idIzdelek = o.idIzdelek GROUP BY i.idIzdelek");
     }
 
 }
