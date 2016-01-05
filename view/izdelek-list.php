@@ -73,13 +73,14 @@
                                 <p><?= $izdelek["opis"] ?></p>
                             </div>
                             <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
+                                <p class="pull-right"><?= $izdelek["count_ocena"]?> ocen</p>
                                 <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
+                                    <?php for ($i=0;$i<round($izdelek["avg_ocena"]);$i++): ?>
+                                    <i class="fa fa-star"></i>
+                                    <?php endfor ?>
+                                    <?php for ($i=0;$i<5-round($izdelek["avg_ocena"]);$i++): ?>
+                                        <i class="fa fa-star-o"></i>
+                                    <?php endfor ?>
                                 </p>
                             </div>
                         </div>

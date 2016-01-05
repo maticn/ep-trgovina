@@ -1,6 +1,7 @@
 <?php
 
 require_once("model/IzdelekDB.php");
+require_once("model/OcenaIzdelkaDB.php");
 require_once("ViewHelper.php");
 
 
@@ -13,13 +14,46 @@ class IzdelkiController
 
         if ($data["id"]) {
             echo ViewHelper::render("view/izdelek-detail.php", [
-                "izdelek" => IzdelekDB::get($data)
+                "izdelek" => IzdelekDB::get($data),
+                "ocene" => OcenaIzdelkaDB::get(["idIzdelek" => $data["id"]]),
+                "id" => $data["id"]
             ]);
         } else {
             echo ViewHelper::render("view/izdelek-list.php", [
                 "izdelki" => IzdelekDB::getAll()
             ]);
         }
+    }
+
+    public static function oceni()
+    {
+        if (!isset($_SESSION["idUporabnik"])) {
+            header("Location:" . BASE_URL . "login");
+        }
+        $validationRules = [
+            'id' => [
+                'filter' => FILTER_VALIDATE_INT,
+                'options' => ['min_range' => 1]
+            ],
+            'ocena' => [
+                'filter' => FILTER_VALIDATE_INT,
+                'options' => ['min_range' => 1, "max_range" => 5]
+            ]
+        ];
+        $data = filter_input_array(INPUT_POST, $validationRules);
+        try {
+            $izdelek = IzdelekDB::get($data); // Izdelek mora obstajati
+            OcenaIzdelkaDB::insertOrUpdate([
+                    "idUporabnik" => $_SESSION["idUporabnik"],
+                    "idIzdelek" => $data["id"],
+                    "ocena" => $data["ocena"]
+                ]
+            );
+            header("Location:".BASE_URL."store?id=".$data["id"]);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+
     }
 
     public static function cart()

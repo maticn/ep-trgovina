@@ -19,10 +19,10 @@ require 'model/IzdelekDB.php';
 //    ]
 //);
 
-//IzdelekDB::get(
+//var_dump(IzdelekDB::get(
 //    [
-//        "idIzdelek" => "1"
+//        "id" => "1"
 //    ]
-//);
+//));
 
-IzdelekDB::getAll();
+var_dump(IzdelekDB::getAll());
