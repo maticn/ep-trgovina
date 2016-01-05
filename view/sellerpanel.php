@@ -6,6 +6,13 @@
  * Time: 19:53
  */
 
+function getRandomWord($len = 5)
+{
+    $word = array_merge(range('0', '9'), range('A', 'Z'));
+    shuffle($word);
+    return substr(implode($word), 0, $len);
+}
+
 $registracija = 0;
 if (!(!isset($_SESSION["idUporabnik"]) && isset($_GET["id"]) && $_GET["id"] != null && $_GET["id"] == -1)) {
     if (!isset($_SESSION["idUporabnik"])) {
@@ -14,6 +21,7 @@ if (!(!isset($_SESSION["idUporabnik"]) && isset($_GET["id"]) && $_GET["id"] != n
     }
 } else {
     $registracija = 1;
+    $_SESSION["mojaVarnost"] = getRandomWord();
 }
 if (isset($_SESSION["idVloga"]) && $_SESSION["idVloga"] == 3) {
     if (!(isset($_GET["id"]) && $_GET["id"] != null && $_GET["id"] == $_SESSION["idUporabnik"])) {
@@ -229,6 +237,18 @@ if (isset($_GET["manage"])) {
                             </div>
                             <input type="hidden" name="idVloga" value="3"/>
 
+
+                            <?php if ($registracija == 1) { ?>
+                                <input type="hidden" name="vercode" value="<?php echo $_SESSION['mojaVarnost']; ?>"/>
+                                <hr>
+                                <div class="form-group">
+                                    <label>Varnostno preverjanje </label>
+                                    <img src="captcha"/>
+                                    <input class="form-control" type="text" name="captcha"
+                                           placeholder="varnostno preverjanje" required>
+                                </div>
+                            <?php } ?>
+
                             <?php
                             if ($mode === "create") {
                                 echo '  <input type="hidden" name="id" value=-1>
@@ -263,6 +283,19 @@ if (isset($_GET["manage"])) {
     function checkpassword() {
         var pass1 = $('input[name=password]').val();
         var pass2 = $('input[name=confirm]').val();
+
+        var registriraj = $('input[name=registracija]').val();
+
+        if (registriraj === "1") {
+            var varno1 = $('input[name=vercode]').val();
+            var varno2 = $('input[name=captcha]').val();
+
+            if (varno1 != varno2) {
+                alert("Varnostna koda ni pravilna.");
+                $('input[name=captcha]').val("");
+                return false;
+            }
+        }
 
         if (pass1 != '' && pass1 != pass2) {
             alert("Gesli se ne ujemata.");

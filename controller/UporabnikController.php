@@ -29,6 +29,10 @@ class UporabnikController {
         }
     }
 
+    public static function captcha() {
+        echo ViewHelper::render("view/captcha.php");
+    }
+
     public static function layout() {
         echo ViewHelper::render("view/includes/layout.html");
     }

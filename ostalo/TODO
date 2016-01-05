@@ -1,4 +1,3 @@
 Matic:
-    - captcha registracija
     - pošiljanje maila za aktivacijo računa
     - HTTPS redirect, certifikati

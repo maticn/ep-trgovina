@@ -27,6 +27,9 @@ $urls = [
     "register" => function () {
         UporabnikController::register();
     },
+    "captcha" => function () {
+        UporabnikController::captcha();
+    },
     "shraniPoste" => function () {
         UporabnikController::poste();
     },
