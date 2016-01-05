@@ -33,6 +33,30 @@ class UporabnikController {
         echo ViewHelper::render("view/captcha.php");
     }
 
+    public static function emailActivation() {
+        echo ViewHelper::render("controller/emailActivation.php");
+    }
+
+    public static function activateAccount() {
+        if (isset($_GET["id"]) && isset($_GET["ime"])) {
+            $id = $_GET["id"];
+            $ime = $_GET["ime"];
+
+            $bazaUser = UporabnikDB::get(["id" => $id]);
+            if($bazaUser["ime"] == $ime) {
+                UporabnikDB::updateAktivno(["idUporabnik" => $id, "aktivno" => 1]);
+                header("Location:login");
+                exit;
+            } else {
+                header("Location:store");
+                exit;
+            }
+        } else {
+            header("Location:store");
+            exit;
+        }
+    }
+
     public static function layout() {
         echo ViewHelper::render("view/includes/layout.html");
     }

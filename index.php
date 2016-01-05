@@ -30,6 +30,12 @@ $urls = [
     "captcha" => function () {
         UporabnikController::captcha();
     },
+    "emailActivation" => function () {
+        UporabnikController::emailActivation();
+    },
+    "activate" => function () {
+        UporabnikController::activateAccount();
+    },
     "shraniPoste" => function () {
         UporabnikController::poste();
     },

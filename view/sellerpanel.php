@@ -239,7 +239,6 @@ if (isset($_GET["manage"])) {
 
 
                             <?php if ($registracija == 1) { ?>
-                                <input type="hidden" name="vercode" value="<?php echo $_SESSION['mojaVarnost']; ?>"/>
                                 <hr>
                                 <div class="form-group">
                                     <label>Varnostno preverjanje </label>
@@ -283,19 +282,6 @@ if (isset($_GET["manage"])) {
     function checkpassword() {
         var pass1 = $('input[name=password]').val();
         var pass2 = $('input[name=confirm]').val();
-
-        var registriraj = $('input[name=registracija]').val();
-
-        if (registriraj === "1") {
-            var varno1 = $('input[name=vercode]').val();
-            var varno2 = $('input[name=captcha]').val();
-
-            if (varno1 != varno2) {
-                alert("Varnostna koda ni pravilna.");
-                $('input[name=captcha]').val("");
-                return false;
-            }
-        }
 
         if (pass1 != '' && pass1 != pass2) {
             alert("Gesli se ne ujemata.");

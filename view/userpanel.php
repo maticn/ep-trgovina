@@ -68,54 +68,74 @@ if (isset($_POST["id"]) && $_POST["id"] != -1 && isset($_POST["idVloga"]) && $_P
 }
 
 // ustvari uporabnika
+$ustvari = 0;
 if (isset($_POST["id"]) && $_POST["id"] == -1 && isset($_POST["idVloga"]) && $_POST["idVloga"] != null) {
 
-    if (isset($_POST["email"]) && !empty($_POST["email"])) {
-        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
-    }
-    if (isset($_POST["password"]) && $_POST["password"] === $_POST["confirm"] && !empty($_POST["password"])) {
-        $geslo = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
-    }
-    if (isset($_POST["ime"]) && !empty($_POST["ime"])) {
-        $ime = filter_input(INPUT_POST, 'ime', FILTER_SANITIZE_SPECIAL_CHARS);
-    }
-    if (isset($_POST["priimek"]) && !empty($_POST["priimek"])) {
-        $priimek = filter_input(INPUT_POST, 'priimek', FILTER_SANITIZE_SPECIAL_CHARS);
-    }
-    if (isset($_POST["idVloga"]) && !empty($_POST["idVloga"])) {   //type
-        $idVloga = filter_input(INPUT_POST, 'idVloga', FILTER_SANITIZE_SPECIAL_CHARS);
+    if(isset($_POST["registracija"]) && $_POST["registracija"] === "1") {
+        if($_POST["captcha"] == $_SESSION["mojaVarnost"]) {
+            $ustvari = 1;
+        } else {
+            header("refresh:5;url=register");
+            echo "Varnostna koda ni pravilna.";
+            exit;
+        }
+    } else {
+        $ustvari = 1;
     }
 
-    // stranka
-    $naslov = null;
-    $idPosta = null;
-    $telefon = null;
-    if (isset($_POST["naslov"]) && !empty($_POST["naslov"])) {
-        $naslov = filter_input(INPUT_POST, 'naslov', FILTER_SANITIZE_SPECIAL_CHARS);
-    }
-    if (isset($_POST["idPosta"]) && !empty($_POST["idPosta"])) {
-        $idPosta = filter_input(INPUT_POST, 'idPosta', FILTER_SANITIZE_SPECIAL_CHARS);
-    }
-    if (isset($_POST["telefon"]) && !empty($_POST["telefon"])) {
-        $telefon = filter_input(INPUT_POST, 'telefon', FILTER_SANITIZE_SPECIAL_CHARS);
-    }
+    if($ustvari === 1) {
+        if (isset($_POST["email"]) && !empty($_POST["email"])) {
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST["password"]) && $_POST["password"] === $_POST["confirm"] && !empty($_POST["password"])) {
+            $geslo = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST["ime"]) && !empty($_POST["ime"])) {
+            $ime = filter_input(INPUT_POST, 'ime', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST["priimek"]) && !empty($_POST["priimek"])) {
+            $priimek = filter_input(INPUT_POST, 'priimek', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST["idVloga"]) && !empty($_POST["idVloga"])) {   //type
+            $idVloga = filter_input(INPUT_POST, 'idVloga', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
 
-    UporabnikDB::insert(
-        [
-            "ime" => $ime, "priimek" => $priimek, "email" => $email, "geslo" => $geslo, "idVloga" => $idVloga,
-            "naslov" => $naslov, "idPosta" => $idPosta, "telefon" => $telefon
-        ]
-    );
+        // stranka
+        $naslov = null;
+        $idPosta = null;
+        $telefon = null;
+        if (isset($_POST["naslov"]) && !empty($_POST["naslov"])) {
+            $naslov = filter_input(INPUT_POST, 'naslov', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST["idPosta"]) && !empty($_POST["idPosta"])) {
+            $idPosta = filter_input(INPUT_POST, 'idPosta', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST["telefon"]) && !empty($_POST["telefon"])) {
+            $telefon = filter_input(INPUT_POST, 'telefon', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+
+        $idNovega = UporabnikDB::insert(
+            [
+                "ime" => $ime, "priimek" => $priimek, "email" => $email, "geslo" => $geslo, "idVloga" => $idVloga,
+                "naslov" => $naslov, "idPosta" => $idPosta, "telefon" => $telefon
+            ]
+        );
 
 
-    if($_POST["registracija"] === "1") {                // registracija uporabnika
-        header("Location:login");
-        exit;
-    } elseif ($_POST["idVloga"] === "2") {              // prodajalec
-        header("Location:prodajalci");
-        exit;
-    } elseif ($_POST["idVloga"] === "3") {              // stranka
-        header("Location:sellerpanel?manage");
+        if (isset($_POST["registracija"]) && $_POST["registracija"] === "1") {       // registracija uporabnika
+            header("Location:emailActivation?id=$idNovega&ime=$ime&email=$email");
+            exit;
+        } elseif ($_POST["idVloga"] === "2") {                                      // prodajalec
+            header("Location:prodajalci");
+            exit;
+        } elseif ($_POST["idVloga"] === "3") {                                      // stranka
+            header("Location:sellerpanel?manage");
+            exit;
+        }
+
+    } else {
+        header("refresh:5;url=register");
+        echo "Registracija ni uspela.";
         exit;
     }
 }
