@@ -12,7 +12,7 @@ class UporabnikController {
     }
 
     public static function checkLogin() {
-        echo ViewHelper::render("view/login.php");
+        echo ViewHelper::render("controller/login.php");
     }
 
     public static function logout() {
@@ -30,7 +30,7 @@ class UporabnikController {
     }
 
     public static function captcha() {
-        echo ViewHelper::render("view/captcha.php");
+        echo ViewHelper::render("controller/captcha.php");
     }
 
     public static function emailActivation() {
@@ -62,7 +62,7 @@ class UporabnikController {
     }
 
     public static function poste() {
-        echo ViewHelper::render("view/shraniPoste.php");
+        echo ViewHelper::render("controller/shraniPoste.php");
     }
 
     public static function adminPanel() {
@@ -78,7 +78,7 @@ class UporabnikController {
     }
 
     public static function editUser() {
-        echo ViewHelper::render("view/userpanel.php");
+        echo ViewHelper::render("controller/userpanel.php");
     }
 
     public static function add() {
