@@ -21,6 +21,9 @@ $urls = [
     "checkLogin" => function () {
         UporabnikController::checkLogin();
     },
+    "logout" => function () {
+        UporabnikController::logout();
+    },
     "shraniPoste" => function () {
         UporabnikController::poste();
     },
@@ -43,7 +46,7 @@ $urls = [
         IzdelkiController::cart();
     },
     "" => function () {
-        ViewHelper::redirect("login");
+        ViewHelper::redirect("store");
     },
 ];
 

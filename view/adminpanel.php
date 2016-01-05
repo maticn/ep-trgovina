@@ -7,8 +7,6 @@
  */
 
 if (!isset($_SESSION["idUporabnik"])) {
-//    header("refresh:5;url=login");
-//    echo "Uporabnik ni prijavljen.";
     header("Location:login");
 }
 if ($_SESSION["idVloga"] != 1) {

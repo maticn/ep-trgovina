@@ -14,6 +14,11 @@ class UporabnikController {
         echo ViewHelper::render("view/login.php");
     }
 
+    public static function logout() {
+        session_destroy();
+        header("Location:store");
+    }
+
     public static function layout() {
         echo ViewHelper::render("view/includes/layout.html");
     }

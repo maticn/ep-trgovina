@@ -1,5 +1,11 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
         <a class="navbar-brand" href="store">
             <div id="logo"></div>
         </a>
@@ -22,7 +28,7 @@
 
     <section id="login">
         <ul class="nav navbar-top-links navbar-right">
-            <li><a href="customerpanel"><i class="fa fa-user fa-fw"></i></a></li>
+            <li><a href="<?php echo $manageUrl; ?>"><i class="fa fa-user fa-fw"></i></a></li>
             <li><a href="logout"><i class="fa fa-sign-out fa-fw"></i></a></li>
         </ul>
     </section>

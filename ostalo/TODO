@@ -1,7 +1,5 @@
 Matic:
-    - nerelavantne linke v navigaciji zakodirej
     - registracija
-    - povezava na gumba v headerju
     - beleženje logina v bazo
     - pošiljanje maila za aktivacijo računa
     - HTTPS redirect, certifikati
