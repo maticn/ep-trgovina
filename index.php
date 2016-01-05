@@ -7,10 +7,12 @@ session_start();
 require_once("controller/IzdelkiController.php");
 require_once("controller/UporabnikController.php");
 require_once("controller/ProductPanelController.php");
+require_once("controller/SlikaController.php");
 
 define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"] , "index.php"));
 define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
 define("CSS_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/css/");
+define ('SITE_ROOT', realpath(dirname(__FILE__)));
 
 $path = isset($_SERVER["PATH_INFO"]) ? trim($_SERVER["PATH_INFO"], "/") : "";
 
@@ -49,6 +51,9 @@ $urls = [
     "sellerpanel" => function () {
         UporabnikController::sellerPanel();
     },
+    "productpanel" => function () {
+        ProductPanelController::panel();
+    },
     "userpanel" => function () {
         UporabnikController::editUser();
     },
@@ -63,6 +68,9 @@ $urls = [
     },
     "addproduct" => function(){
         ProductPanelController::add();
+    },
+    "slike" => function () {
+        SlikaController::controller();
     },
     "" => function () {
         ViewHelper::redirect("store");

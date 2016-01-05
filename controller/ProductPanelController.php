@@ -1,13 +1,12 @@
 <?php
 
-require_once 'HTML/QuickForm2/Renderer.php';
-require_once("model/BookDB.php");
+require_once("model/IzdelekDB.php");
 require_once("ViewHelper.php");
 require_once("forms/IzdelekForm.php");
 
 class ProductPanelController {
 
-    public static function index() {
+    public static function panel() {
         $rules = [
             "id" => [
                 'filter' => FILTER_VALIDATE_INT,
@@ -22,8 +21,8 @@ class ProductPanelController {
                 "book" => BookDB::get($data)
             ]);
         } else {
-            echo ViewHelper::render("view/book-list.php", [
-                "books" => BookDB::getAll()
+            echo ViewHelper::render("view/productpanel.php", [
+                "izdelki" => IzdelekDB::getAll()
             ]);
         }
     }
@@ -37,7 +36,7 @@ class ProductPanelController {
             ));
             ViewHelper::redirect(BASE_URL . "store");
         } else {
-            echo ViewHelper::render("view/izdelek-form.php", [
+            echo ViewHelper::render("view/izdelek-add.php", [
                 "form" => $form
             ]);
         }

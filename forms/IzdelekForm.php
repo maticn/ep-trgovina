@@ -6,6 +6,7 @@ require_once 'HTML/QuickForm2/Element/InputSubmit.php';
 require_once 'HTML/QuickForm2/Element/InputText.php';
 require_once 'HTML/QuickForm2/Element/Textarea.php';
 require_once 'HTML/QuickForm2/Element/InputCheckbox.php';
+require_once 'HTML/QuickForm2/Element/InputFile.php';
 
 abstract class IzdelekAbstractForm extends HTML_QuickForm2 {
 
