@@ -12,14 +12,21 @@ class IzdelkiController
     {
         $data = filter_input_array(INPUT_GET);
 
+
         if ($data["id"]) {
+            $izdelek = IzdelekDB::get($data);
+            $izdelek["slike"] = SlikaIzdelkaDB::get($izdelek);
             echo ViewHelper::render("view/izdelek-detail.php", [
-                "izdelek" => IzdelekDB::get($data),
+                "izdelek" => $izdelek,
                 "ocene" => OcenaIzdelkaDB::get(["idIzdelek" => $data["id"]])
             ]);
         } else {
+            $izdelki = IzdelekDB::getAll();
+            foreach ($izdelki as &$izdelek) {
+                $izdelek["slike"] = SlikaIzdelkaDB::get($izdelek);
+            }
             echo ViewHelper::render("view/izdelek-list.php", [
-                "izdelki" => IzdelekDB::getAll()
+                "izdelki" => $izdelki
             ]);
         }
     }
@@ -48,7 +55,7 @@ class IzdelkiController
                     "ocena" => $data["ocena"]
                 ]
             );
-            header("Location:".BASE_URL."store?id=".$data["id"]);
+            header("Location:" . BASE_URL . "store?id=" . $data["id"]);
         } catch (Exception $e) {
             die($e->getMessage());
         }
