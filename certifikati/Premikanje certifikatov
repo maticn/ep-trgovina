@@ -1,0 +1,7 @@
+sudo cp epca-cacert.pem /etc/apache2/ssl/
+sudo cp epca-crl.pem /etc/apache2/ssl/
+sudo cp webmaster@localhost-cert.pem /etc/apache2/ssl/
+sudo cp webmaster@localhost-key.pem /etc/apache2/ssl/
+
+/etc/apache2/sites-available default-ssl.conf
+sudo chmod -R 777 /etc/apache2/ssl/
