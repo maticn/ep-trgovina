@@ -12,7 +12,6 @@
 </footer>
 
 
-
 <!-- Metis Menu Plugin JavaScript -->
 <script src="static/js/jquery.js"></script>
 <script src="static/metisMenu/dist/metisMenu.min.js"></script>
