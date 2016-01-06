@@ -12,10 +12,10 @@
 <body>
 
 <!-- Navigation -->
-<?php include 'includes/nav-store.php' ?>
+<?php include 'includes/nav.php' ?>
 
 <!-- Page Content -->
-<div class="container">
+<div id="page-wrapper" style="padding-top: 25px">
 
     <div class="row">
 
@@ -44,6 +44,12 @@
                                 <?php endforeach ?>
                             </ol>
                             <div class="carousel-inner">
+                                <?php if (empty($izdelek["slike"])): ?>
+                                    <div class="item active" style="height: 300px">
+                                        <i class="fa fa-file-image-o fa-3x"
+                                              style="top: 129px; left:572px; position: relative"></i>
+                                    </div>
+                                <?php endif; ?>
                                 <?php foreach ($izdelek["slike"] as $idx => $slika): ?>
                                 <?php if ($idx == 0): ?>
                                 <div class="item active">
@@ -53,7 +59,7 @@
                                         <img class="slide-image" style="height: 300px; width: 800px;"
                                              src="<?= IMAGES_URL . $slika["slika"] ?>" alt="">
                                     </div>
-                                    <?php endforeach ?>
+                                <?php endforeach ?>
                                 </div>
                                 <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                                     <span class="glyphicon glyphicon-chevron-left"></span>
