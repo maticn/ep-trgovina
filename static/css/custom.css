@@ -239,3 +239,21 @@ form.form-qf2 .label {
     cursor: inherit;
     display: block;
 }
+
+.itemsContainer {
+    position:relative;
+    display: inline-block;
+}
+.itemsContainer:hover .play{display:block}
+
+.play{
+    position : absolute;
+    display:none;
+    top:20%;
+    width:40px;
+    margin:0 auto; left:0px;
+    right:0px;
+    z-index:100;
+    font-size: 22px;
+}
+

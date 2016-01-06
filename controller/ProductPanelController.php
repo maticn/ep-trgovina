@@ -21,8 +21,12 @@ class ProductPanelController {
                 "book" => BookDB::get($data)
             ]);
         } else {
+            $izdelki = IzdelekDB::getAll();
+            foreach ($izdelki as &$izdelek){
+                $izdelek["slike"] = SlikaIzdelkaDB::get($izdelek);
+            }
             echo ViewHelper::render("view/productpanel.php", [
-                "izdelki" => IzdelekDB::getAll()
+                "izdelki" => $izdelki
             ]);
         }
     }

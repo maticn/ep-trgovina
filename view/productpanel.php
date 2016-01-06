@@ -22,7 +22,26 @@
                         <div class="panel-body">
                             <?= $izdelek["opis"] ?>
                             <hr>
-                            <form action="<?= BASE_URL."slike" ?>" class="form" method="post" enctype="multipart/form-data">
+                            <div>
+                                <?php foreach ($izdelek["slike"] as $slika): ?>
+                                    <div class="itemsContainer">
+                                        <form action="<?= BASE_URL . "slike" ?>" class="form" method="post">
+                                            <input type="hidden" name="do" value="delete">
+                                            <input type="hidden" name="id" value="<?= $slika["idSlikaIzdelka"] ?>">
+                                            <img src="<?= IMAGES_URL . $slika["slika"] ?>" alt="slika"
+                                                 class="img-thumbnail" style="width: 100px;height: 50px;">
+                                            <div class="play">
+                                                <button class="btn btn-sm btn-default" type="submit">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <hr>
+                            <form action="<?= BASE_URL . "slike" ?>" class="form" method="post"
+                                  enctype="multipart/form-data">
                                 <div class="input-group">
                                       <span class="input-group-btn">
                                         <span class="btn btn-default btn-file">
@@ -36,7 +55,7 @@
                                         </button>
                                     </span>
                                     <input type="hidden" name="do" value="add">
-                                    <input type="hidden" name="id" value="<?=$izdelek["idIzdelek"] ?>">
+                                    <input type="hidden" name="id" value="<?= $izdelek["idIzdelek"] ?>">
                                 </div><!-- /input-group -->
 
                             </form>
