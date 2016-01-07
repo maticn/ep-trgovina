@@ -74,7 +74,8 @@
                     <div class="caption-full">
                         <div class="btn-group pull-right" role="group">
                             <a class="btn btn-default disabled"><?= $izdelek["cena"] ?> €</a>
-                            <button type="button" class="btn btn-success">Dodaj v košarico</button>
+                            <button type="button" class="btn btn-success"
+                                    onclick="dodajVKosarico('<?= BASE_URL."cart/ajax" ?>',<?= $izdelek["idIzdelek"]?>)">Dodaj v košarico</button>
                         </div>
                         <h2><?= $izdelek["ime"] ?>
                         </h2>

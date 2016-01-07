@@ -14,6 +14,8 @@
 
 <!-- Metis Menu Plugin JavaScript -->
 <script src="static/js/jquery.js"></script>
+<script src="static/js/trgovina.js"></script>
+<script src="static/js/jquery.toast.min.js"></script>
 <script src="static/metisMenu/dist/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->

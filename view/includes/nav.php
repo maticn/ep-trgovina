@@ -49,6 +49,9 @@
                 <li>
                     <a href="store"><span><i class="fa fa-laptop fa-fw"></i> Trgovina</span></a>
                 </li>
+                <li>
+                    <a href="<?= BASE_URL."cart" ?>"><span><i class="fa fa-shopping-cart fa-fw"></i> Voziček</span></a>
+                </li>
                 <?php if ($vloga == 1) { ?>
                     <li>
                         <a href="#">

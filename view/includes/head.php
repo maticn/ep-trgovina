@@ -13,6 +13,7 @@
 <!-- Custom CSS -->
 <link href="static/css/sb-admin-2.css" rel="stylesheet">
 <link href="static/css/custom.css" rel="stylesheet">
+<link href="static/css/jquery.toast.min.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
