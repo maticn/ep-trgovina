@@ -29,12 +29,17 @@
     if (isset($_SESSION["idVloga"])) {
         $vloga = $_SESSION["idVloga"];
     }
+
+    $logoutUrl = "login";
+    if($vloga != 0) {
+        $logoutUrl = "logout";
+    }
     ?>
 
     <section id="login">
         <ul class="nav navbar-top-links navbar-right">
             <li><a href="<?php echo $manageUrl; ?>"><i class="fa fa-user fa-fw"></i></a></li>
-            <li><a href="logout"><i class="fa fa-sign-out fa-fw"></i></a></li>
+            <li><a href="<?php echo $logoutUrl; ?>"><i class="fa fa-sign-out fa-fw"></i></a></li>
         </ul>
     </section>
     <!-- /.navbar-top-links -->

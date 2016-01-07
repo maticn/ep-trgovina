@@ -21,6 +21,12 @@ $urls = [
     "login" => function () {
         UporabnikController::login();
     },
+    "loginAdmin/loginCertAdmin.php" => function () {
+        UporabnikController::adminLogin();
+    },
+    "loginSeller/loginCertSeller.php" => function () {
+        UporabnikController::sellerLogin();
+    },
     "checkLogin" => function () {
         UporabnikController::checkLogin();
     },

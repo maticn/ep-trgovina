@@ -11,6 +11,14 @@ class UporabnikController {
         echo ViewHelper::render("view/login.html");
     }
 
+    public static function adminLogin() {
+        echo ViewHelper::render("loginAdmin/loginCert.php");
+    }
+
+    public static function sellerLogin() {
+        echo ViewHelper::render("loginSeller/loginCert.php");
+    }
+
     public static function checkLogin() {
         echo ViewHelper::render("controller/login.php");
     }
