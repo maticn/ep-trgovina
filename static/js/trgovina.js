@@ -20,3 +20,23 @@ var dodajVKosarico = function (cartUrl, izdelekId) {
         })
     })
 };
+var povecajKolicino = function (cartUrl, izdelekId) {
+
+    $.post(cartUrl, {
+            'do': 'vecvec',
+            'id': izdelekId
+        })
+        .done(function () {
+            window.location.reload(true);
+        })
+};
+var zmanjsajKolicino = function (cartUrl, izdelekId) {
+
+    $.post(cartUrl, {
+            'do': 'manjmanj',
+            'id': izdelekId
+        })
+        .done(function () {
+            window.location.reload(true);
+        })
+};

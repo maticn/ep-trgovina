@@ -19,13 +19,7 @@
 
     <div class="row">
 
-        <div class="col-md-3">
-            <a class="btn btn-block btn-info btn-lg" href="<?= BASE_URL . "store" ?>">
-                <i class="fa fa-arrow-left"></i> Nazaj na seznam izdelkov
-            </a>
-        </div>
-
-        <div class="col-md-9">
+        <div class="col-md-6">
 
             <div class="thumbnail">
 

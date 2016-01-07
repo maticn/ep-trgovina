@@ -75,6 +75,9 @@ $urls = [
     "cart/ajax" => function(){
         CartController::ajax();
     },
+    "cart/oddaj" => function(){
+        CartController::oddajNarocilo();
+    },
     "addproduct" => function(){
         ProductPanelController::add();
     },

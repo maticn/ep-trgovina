@@ -18,6 +18,7 @@
 <div id="page-wrapper">
 
     <div class="row" style="padding-top: 25px;">
+        <h1>Trgovina</h1>
 
         <div class="row">
             <?php foreach ($izdelki as $izdelek): ?>
