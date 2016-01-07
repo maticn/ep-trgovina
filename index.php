@@ -3,7 +3,6 @@
 // enables sessions for the entire app
 session_start();
 
-//require_once("controller/BooksController.php");
 require_once("controller/IzdelkiController.php");
 require_once("controller/UporabnikController.php");
 require_once("controller/ProductPanelController.php");
