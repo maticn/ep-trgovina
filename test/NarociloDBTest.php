@@ -1,11 +1,11 @@
 <?php
 require 'model/NarociloDB.php';
 
-NarociloDB::insert(
-    [
-        "cenaSkupaj" => "50.89", "status" => "1", "idStranke" => "1"
-    ]
-);
+//NarociloDB::insert(
+//    [
+//        "cenaSkupaj" => "50.89", "status" => "1", "idStranke" => "1"
+//    ]
+//);
 
 //NarociloDB::update(
 //    [

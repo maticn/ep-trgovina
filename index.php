@@ -8,6 +8,7 @@ require_once("controller/UporabnikController.php");
 require_once("controller/ProductPanelController.php");
 require_once("controller/SlikaController.php");
 require_once("controller/CartController.php");
+require_once("controller/NarocilaController.php");
 
 define("BASE_URL", rtrim($_SERVER["SCRIPT_NAME"] , "index.php"));
 define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
@@ -77,6 +78,12 @@ $urls = [
     },
     "cart/oddaj" => function(){
         CartController::oddajNarocilo();
+    },
+    "narocila" => function(){
+        NarocilaController::index();
+    },
+    "narocila/akcije" => function(){
+        NarocilaController::akcije();
     },
     "addproduct" => function(){
         ProductPanelController::add();

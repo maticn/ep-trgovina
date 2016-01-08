@@ -17,12 +17,17 @@ class NarociloDB extends AbstractDB {
             . " WHERE idNarocilo = :idNarocilo", $params);
     }
 
+    public static function updateStatus(array $params) {
+        return parent::modify("UPDATE Narocilo SET status = :status"
+            . " WHERE idNarocilo = :idNarocilo", $params);
+    }
+
     public static function delete(array $id) {
         return parent::modify("DELETE FROM Narocilo WHERE idNarocilo = :id", $id);
     }
 
     public static function get(array $id) {
-        $narocila = parent::query("SELECT cenaSkupaj, status, idStranke, datumOddaje, idProdajalca, datumPotrditve"
+        $narocila = parent::query("SELECT idNarocilo, cenaSkupaj, status, idStranke, datumOddaje, idProdajalca, datumPotrditve"
             . " FROM Narocilo"
             . " WHERE idNarocilo = :id", $id);
 

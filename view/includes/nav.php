@@ -91,7 +91,7 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="#"><span><i class="fa fa-book fa-fw"></i> Naročila</span></a>
+                        <a href="<?= BASE_URL."narocila" ?>"><span><i class="fa fa-book fa-fw"></i> Naročila</span></a>
                     </li>
                 <?php } ?>
             </ul>
