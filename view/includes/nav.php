@@ -16,11 +16,11 @@
     $manageUrl = "login";
     if (isset($_SESSION["idUporabnik"])) {
         $id = $_SESSION["idUporabnik"];
-        if ($_SESSION["idVloga"] == 1) {
+        if (isset($_SESSION["idVloga"]) && $_SESSION["idVloga"] == 1) {
             $manageUrl = "adminpanel";
-        } else if ($_SESSION["idVloga"] == 2) {
+        } else if (isset($_SESSION["idVloga"]) && $_SESSION["idVloga"] == 2) {
             $manageUrl = "sellerpanel";
-        } else if ($_SESSION["idVloga"] == 3) {
+        } else if (isset($_SESSION["idVloga"]) && $_SESSION["idVloga"] == 3) {
             $manageUrl = "sellerpanel?id=$id";
         }
     }
