@@ -66,6 +66,9 @@ class IzdelkiController
     {
         header('Content-Type: application/json');
         $izdelki = IzdelekDB::getAll();
+        foreach ($izdelki as $_ => &$izdelek) {
+            $izdelek["slike"] = SlikaIzdelkaDB::get($izdelek);
+        }
         echo json_encode($izdelki);
     }
 
