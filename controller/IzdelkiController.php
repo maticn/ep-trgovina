@@ -62,6 +62,13 @@ class IzdelkiController
 
     }
 
+    public static function rest()
+    {
+        header('Content-Type: application/json');
+        $izdelki = IzdelekDB::getAll();
+        echo json_encode($izdelki);
+    }
+
 
     public static function add()
     {
