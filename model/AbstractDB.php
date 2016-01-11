@@ -1,5 +1,5 @@
 <?php
-require_once 'model/DB.php';
+require_once 'DB.php';
 
 abstract class AbstractDB {
 
