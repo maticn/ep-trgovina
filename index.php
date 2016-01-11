@@ -19,6 +19,15 @@ $path = isset($_SERVER["PATH_INFO"]) ? trim($_SERVER["PATH_INFO"], "/") : "";
 
 // ROUTER: defines mapping between URLS and controllers
 $urls = [
+//    "izdelkiApi" => function () {
+//        ViewHelper::render("controller/RestController.php");
+//    },
+//    "@izdelkiApi/.." => function () {
+//        ViewHelper::render("controller/RestController.php");
+//    },
+//    "izdelkiApi/izdelki" => function () {
+//        ViewHelper::render("controller/RestController.php");
+//    },
     "login" => function () {
         UporabnikController::login();
     },
