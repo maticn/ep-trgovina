@@ -28,7 +28,7 @@ import fri.ep.androidtrgovina.volley.VolleyTrgovinaRequest;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String ADDRESS = "https://localhost/netbeans/trgovina/izdelkiApi/";
+    public static final String ADDRESS = "http://10.0.2.2/netbeans/trgovina/api/izdelki";
 
     private static final String TAG = MainActivity.class.getCanonicalName();
     private ListView articlesTable;
