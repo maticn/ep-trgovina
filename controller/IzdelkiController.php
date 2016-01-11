@@ -62,15 +62,15 @@ class IzdelkiController
 
     }
 
-    public static function rest()
-    {
-        header('Content-Type: application/json');
-        $izdelki = IzdelekDB::getAll();
-        foreach ($izdelki as $_ => &$izdelek) {
-            $izdelek["slike"] = SlikaIzdelkaDB::get($izdelek);
-        }
-        echo json_encode($izdelki);
-    }
+//    public static function rest()
+//    {
+//        header('Content-Type: application/json');
+//        $izdelki = IzdelekDB::getAll();
+//        foreach ($izdelki as $_ => &$izdelek) {
+//            $izdelek["slike"] = SlikaIzdelkaDB::get($izdelek);
+//        }
+//        echo json_encode($izdelki);
+//    }
 
 
     public static function add()
