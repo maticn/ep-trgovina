@@ -44,7 +44,12 @@ public class VolleyTrgovinaRequest extends Request<IzdelkiResponse> {
     @Override
     protected Response<IzdelkiResponse> parseNetworkResponse(NetworkResponse response) {
         try {
-            final String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+            String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+//            json = json.substring(1, json.length() - 1);
+//            json = "{" + json + "}";
+//            System.out.println(json);
+//            String nesto = json.substring(100, 110);
+//            System.out.println(nesto);
             return Response.success(gson.fromJson(json, IzdelkiResponse.class), HttpHeaderParser.parseCacheHeaders(response));
         } catch (UnsupportedEncodingException | JsonSyntaxException e) {
             return Response.error(new ParseError(e));
