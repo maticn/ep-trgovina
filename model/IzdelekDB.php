@@ -65,4 +65,12 @@ class IzdelekDB extends AbstractDB
         }
     }
 
+    public static function getAktivni()
+    {
+        return parent::query("SELECT i.idIzdelek, i.ime, i.opis, i.cena, i.aktivno, AVG(o.ocena) AS avg_ocena, "
+            . "COUNT(o.ocena) AS count_ocena"
+            . " FROM Izdelek i  LEFT JOIN OcenaIzdelka o"
+            . " ON i.idIzdelek = o.idIzdelek  WHERE i.aktivno=1 GROUP BY i.idIzdelek");
+    }
+
 }

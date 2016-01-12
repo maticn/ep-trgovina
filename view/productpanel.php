@@ -10,14 +10,16 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Urejaj izdelke</h1>
+            <h1 class="page-header">Izdelki</h1>
             <?php foreach ($izdelki as $izdelek): ?>
                 <div class="col-lg-4 col-md-4 col-sm-4">
 
-                    <div class="panel panel-default">
+                    <div class="panel <?= $izdelek["aktivno"] == 1?"panel-success":"panel-danger" ?>">
                         <div class="panel-heading">
-                            <?= $izdelek["ime"] ?>
-                            <strong class="pull-right"><?= $izdelek["cena"] ?> €</strong>
+                            <?= $izdelek["ime"].": " ?>
+                            <strong><?= $izdelek["cena"] ?> €</strong>
+                            <a href="<?= BASE_URL . "editproduct?id=" . $izdelek["idIzdelek"] ?>"
+                               class="pull-right btn btn-default btn-sm">Uredi</a>
                         </div>
                         <div class="panel-body">
                             <?= $izdelek["opis"] ?>

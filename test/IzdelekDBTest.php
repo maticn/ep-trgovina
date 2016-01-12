@@ -25,4 +25,4 @@ require 'model/IzdelekDB.php';
 //    ]
 //));
 
-var_dump(IzdelekDB::getAll());
+var_dump(IzdelekDB::get(["id" =>2]));

@@ -92,6 +92,9 @@ $urls = [
     "addproduct" => function(){
         ProductPanelController::add();
     },
+    "editproduct" => function(){
+        ProductPanelController::edit();
+    },
     "slike" => function () {
         SlikaController::controller();
     },

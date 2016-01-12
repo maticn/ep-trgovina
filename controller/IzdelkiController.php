@@ -21,7 +21,7 @@ class IzdelkiController
                 "ocene" => OcenaIzdelkaDB::get(["idIzdelek" => $data["id"]])
             ]);
         } else {
-            $izdelki = IzdelekDB::getAll();
+            $izdelki = IzdelekDB::getAktivni();
             foreach ($izdelki as &$izdelek) {
                 $izdelek["slike"] = SlikaIzdelkaDB::get($izdelek);
             }

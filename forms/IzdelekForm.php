@@ -13,9 +13,10 @@ abstract class IzdelekAbstractForm extends HTML_QuickForm2 {
     public $ime;
     public $opis;
     public $cena;
+    public $aktivno;
 
-    public function __construct($id) {
-        parent::__construct($id, "post", ["action" => BASE_URL."addproduct"]);
+    public function __construct($id, $action) {
+        parent::__construct($id, "post", ["action" => $action]);
         $this->setAttribute('class','form form-qf2');
 
         $this->ime = new HTML_QuickForm2_Element_InputText('ime');
@@ -59,9 +60,29 @@ abstract class IzdelekAbstractForm extends HTML_QuickForm2 {
 class IzdelekInsertForm extends IzdelekAbstractForm {
 
     public function __construct($id) {
-        parent::__construct($id);
+        parent::__construct($id,BASE_URL."addproduct");
 
         $this->button->setAttribute('value', 'Dodaj izdelek');
+    }
+
+}
+
+class IzdelekEditForm extends IzdelekAbstractForm {
+
+    public function __construct($id) {
+        parent::__construct($id,"");
+        $this->removeChild($this->button);
+
+        $this->aktivno = new HTML_QuickForm2_Element_InputCheckbox("aktivno");
+        $this->aktivno->setLabel("Aktivno");
+        $this->addElement($this->aktivno);
+        $this->addElement($this->button);
+
+        $this->button->setAttribute('value', 'Posodobi izdelek');
+
+
+        $this->id = new HTML_QuickForm2_Element_InputHidden("id");
+        $this->addElement($this->id);
     }
 
 }
