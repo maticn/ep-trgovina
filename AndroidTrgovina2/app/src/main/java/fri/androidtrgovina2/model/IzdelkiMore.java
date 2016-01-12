@@ -11,12 +11,12 @@ public class IzdelkiMore implements Serializable {
     public String ime;
     public String opis;
     public double cena;
-    public double avgOcena;
-    public int stOcen;
+    public double avg_ocena;
+    public int count_ocena;
 
     @Override
     public String toString() {
-        return String.format("id: %d \nime: %s \nopis: %s \ncena: %.2f EUR \nocena: %.2f \nstOcen: %d", idIzdelek, ime, opis, cena, avgOcena, stOcen);
+        return String.format("id: %d \nime: %s \nopis: %s \ncena: %.2f EUR \nocena: %.2f \nstOcen: %d", idIzdelek, ime, opis, cena, avg_ocena, count_ocena);
     }
 
 }

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -26,10 +27,15 @@ public class MainActivity extends ListActivity {
     public static final String ADDRESS = "http://10.0.2.2/netbeans/trgovina/api/izdelki";
     private static final String TAG = MainActivity.class.getCanonicalName();
 
+    private TextView naslovTV;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
+
+//        naslovTV = (TextView) findViewById(R.id.pageTitle);
+//        naslovTV.setText("Trgovina JKMN - izdelki");
 
         final RequestQueue queue = Volley.newRequestQueue(this);
         final StringRequest stringRequest = new StringRequest(Request.Method.GET, ADDRESS,
