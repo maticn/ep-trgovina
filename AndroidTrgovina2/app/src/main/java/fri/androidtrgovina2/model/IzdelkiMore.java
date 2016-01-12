@@ -16,7 +16,7 @@ public class IzdelkiMore implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("id: %d \n ime: %s \n opis: %s \n cena: (%.2f EUR) \n ocena: %.2f \n stOcen: %d", idIzdelek, ime, opis, cena, avgOcena, stOcen);
+        return String.format("id: %d \nime: %s \nopis: %s \ncena: %.2f EUR \nocena: %.2f \nstOcen: %d", idIzdelek, ime, opis, cena, avgOcena, stOcen);
     }
 
 }
