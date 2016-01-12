@@ -1,0 +1,9 @@
+\select@language {slovene}
+\contentsline {chapter}{\numberline {1}Uvod}{2}{chapter.1}
+\contentsline {chapter}{\numberline {2}Navedba realiziranih storitev}{3}{chapter.2}
+\contentsline {chapter}{\numberline {3}Podatkovni model}{4}{chapter.3}
+\contentsline {chapter}{\numberline {4}Varnost sistema}{6}{chapter.4}
+\contentsline {chapter}{\numberline {5}Izjava o avtorstvu seminarske naloge}{7}{chapter.5}
+\contentsline {chapter}{\numberline {6}Zaklju\IeC {\v c}ek}{9}{chapter.6}
+\contentsline {chapter}{\numberline {7}Literatura}{10}{chapter*.2}
+\vspace {15pt}
