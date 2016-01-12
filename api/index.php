@@ -65,14 +65,14 @@ switch ($resource) {
     case "izdelki":
         if ($http_method == "GET" && $param == null) {
             // getAll
-            $izdelki = IzdelekDB::getAll();
-            foreach ($izdelki as $_ => &$izdelek) {
-                $izdelek["slike"] = SlikaIzdelkaDB::get($izdelek);
-            }
+            $izdelki = IzdelekDB::getAllRest();
+//            foreach ($izdelki as $_ => &$izdelek) {
+//                $izdelek["slike"] = SlikaIzdelkaDB::get($izdelek);
+//            }
             echo json_encode($izdelki);
         } else if ($http_method == "GET" && $param != null) {
             // get
-            $izdelek = IzdelekDB::get(["id" => $param]);
+            $izdelek = IzdelekDB::getRest(["id" => $param]);
             if ($izdelek != null) {
 //                $izdelek["uri"] = "https://" . $server_addr . $script_uri . $return_url . $izdelek["idIzdelek"];
                 echo json_encode($izdelek);

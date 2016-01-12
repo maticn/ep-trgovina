@@ -44,4 +44,25 @@ class IzdelekDB extends AbstractDB
             . " ON i.idIzdelek = o.idIzdelek GROUP BY i.idIzdelek");
     }
 
+    public static function getAllRest()
+    {
+        return parent::query("SELECT idIzdelek, ime "
+            . " FROM Izdelek i "
+            . " WHERE i.aktivno = 1");
+    }
+
+    public static function getRest(array $params)
+    {
+        $izdelki = parent::query("SELECT i.idIzdelek, i.ime, i.opis, i.cena, AVG(o.ocena) AS avg_ocena, "
+            . "COUNT(o.ocena) AS count_ocena"
+            . " FROM Izdelek i, OcenaIzdelka o"
+            . " WHERE i.idIzdelek = :id AND o.idIzdelek = i.idIzdelek AND i.Aktivno = 1 ", $params);
+
+        if (count($izdelki) == 1) {
+            return $izdelki[0];
+        } else {
+            throw new InvalidArgumentException("Izdelek ne obstaja.");
+        }
+    }
+
 }
