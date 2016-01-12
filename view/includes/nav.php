@@ -1,3 +1,4 @@
+<?php require_once("model/UporabnikDB.php") ?>
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -31,13 +32,18 @@
     }
 
     $logoutUrl = "login";
-    if($vloga != 0) {
+    if ($vloga != 0) {
         $logoutUrl = "logout";
     }
     ?>
 
     <section id="login">
         <ul class="nav navbar-top-links navbar-right">
+            <?php if(isset($_SESSION["idUporabnik"])): ?>
+                <li>Pozdravljeni, <?= UporabnikDB::get(["id" => $_SESSION["idUporabnik"]])["ime"] ?></li>
+            <?php else: ?>
+                <li><a href="<?= BASE_URL."login" ?>">Prijava</a></li>
+            <?php endif ?>
             <li><a href="<?php echo $manageUrl; ?>"><i class="fa fa-user fa-fw"></i></a></li>
             <li><a href="<?php echo $logoutUrl; ?>"><i class="fa fa-sign-out fa-fw"></i></a></li>
         </ul>
@@ -55,7 +61,11 @@
                     <a href="store"><span><i class="fa fa-laptop fa-fw"></i> Trgovina</span></a>
                 </li>
                 <li>
-                    <a href="<?= BASE_URL."cart" ?>"><span><i class="fa fa-shopping-cart fa-fw"></i> Voziček</span></a>
+                    <a href="<?= BASE_URL . "cart" ?>"><span><i
+                                class="fa fa-shopping-cart fa-fw"></i> Voziček</span></a>
+                </li>
+                <li>
+                    <a href="<?= BASE_URL . "narocila" ?>"><span><i class="fa fa-book fa-fw"></i> Naročila</span></a>
                 </li>
                 <?php if ($vloga == 1) { ?>
                     <li>
@@ -85,13 +95,10 @@
                             <i class="fa fa-cubes fa-fw"></i> Upravljaj s produkti<span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#">Pregled</a></li>
-                            <li><a href="#">Dodaj produkt</a></li>
+                            <li><a href="<?= BASE_URL . "productpanel" ?>">Pregled</a></li>
+                            <li><a href="<?= BASE_URL . "addproduct" ?>">Dodaj produkt</a></li>
                         </ul>
                         <!-- /.nav-second-level -->
-                    </li>
-                    <li>
-                        <a href="<?= BASE_URL."narocila" ?>"><span><i class="fa fa-book fa-fw"></i> Naročila</span></a>
                     </li>
                 <?php } ?>
             </ul>

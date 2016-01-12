@@ -37,6 +37,11 @@ class NarociloDB extends AbstractDB {
             throw new InvalidArgumentException("Narocilo ne obstaja.");
         }
     }
+    public static function getForStranka(array $params){
+        return  parent::query("SELECT idNarocilo, cenaSkupaj, status, idStranke, datumOddaje, idProdajalca, datumPotrditve"
+            . " FROM Narocilo"
+            . " WHERE idStranke = :idStranke", $params);
+    }
 
     public static function getAll() {
         return parent::query("SELECT idNarocilo, cenaSkupaj, status, idStranke, datumOddaje, idProdajalca, datumPotrditve"

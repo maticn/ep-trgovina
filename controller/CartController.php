@@ -105,7 +105,6 @@ class CartController
     public static function oddajNarocilo()
     {
         // TODO
-        $_SESSION["idUporabnik"] = 2;
         if (!isset($_SESSION["idUporabnik"])) {
             header("Location:store");
             exit;
@@ -121,6 +120,7 @@ class CartController
                 "kolicina" => $kolicina
             ]);
         }
+        unset($_SESSION["cart"]); // Spraznimo voziček ob oddaji naročila
         header("Location:".BASE_URL."narocila");
     }
 

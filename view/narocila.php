@@ -26,7 +26,7 @@
                 <?php foreach ($narocila as $narocilo): ?>
                     <tr>
                         <td><?= $narocilo["idNarocilo"] ?></td>
-                        <td><?= $narocilo["stranka"]["ime"] ?></td>
+                        <td><?= $narocilo["stranka"]["ime"]." ".$narocilo["stranka"]["priimek"] ?></td>
                         <td><?= $narocilo["cenaSkupaj"] ?> €</td>
                         <td><?= $narocilo["datumOddaje"] ?></td>
                         <td><?= $narocilo["statusDisplay"] ?></td>
