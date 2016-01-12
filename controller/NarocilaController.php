@@ -14,7 +14,15 @@ class NarocilaController
 
     public static function index()
     {
-        $narocila = NarociloDB::getAll();
+        if (!isset($_SESSION["idUporabnik"])) {
+            header("Location:" . BASE_URL . "login");
+        }
+        if ($_SESSION["idVloga"] == 3){ // Stranka vidi samo svoja naročila
+            $narocila = NarociloDB::getForStranka(["idStranke" => $_SESSION["idUporabnik"]]);
+        } else {
+            $narocila = NarociloDB::getAll();
+        }
+
         foreach ($narocila as &$narocilo) {
             $narocilo["stranka"] = UporabnikDB::get(["id" => $narocilo["idStranke"]]);
             $narocilo["statusDisplay"] = NarocilaController::$statusi[$narocilo["status"]];
@@ -44,7 +52,7 @@ class NarocilaController
                 try {
                     $narocilo = NarociloDB::get($data);
                     // stranka lahko stornira samo svoja narocila
-                    if ($_SESSION["idVloga"] == 3 && $narocilo["idStranka"] != $_SESSION["idUporabnik"]) {
+                    if ($_SESSION["idVloga"] == 3 && $narocilo["idStranke"] != $_SESSION["idUporabnik"]) {
                         die("Operacija ni dovoljena.");
                     }
                     NarociloDB::updateStatus(["idNarocilo" => $data["id"], "status" => 3]);
