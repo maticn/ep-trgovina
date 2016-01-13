@@ -19,6 +19,19 @@
 
     <div class="row" style="padding-top: 25px;">
         <h1>Trgovina</h1>
+        <div class="col-md-2 pull-right">
+            <form action="" class="form" method="post">
+                <label for="iskanje">
+                    Iskanje izdelkov
+                </label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Poišči..." name="iskanje" id="iskanje">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                      </span>
+                </div><!-- /input-group -->
+            </form>
+        </div>
 
         <div class="row">
             <?php foreach ($izdelki as $izdelek): ?>
@@ -27,9 +40,10 @@
                         <?php if (!empty($izdelek["slike"])): ?>
                             <img src="<?= IMAGES_URL . $izdelek["slike"][0]["slika"] ?>" alt="slike"
                                  style="width: 320px;height: 150px;">
-                            <?php else: ?>
+                        <?php else: ?>
                             <div style="width: 320px;height: 150px">
-                                <i class="fa fa-file-image-o fa-3x" style="top: 54px; position: relative; left:103px"></i>
+                                <i class="fa fa-file-image-o fa-3x"
+                                   style="top: 54px; position: relative; left:103px"></i>
                             </div>
                         <?php endif; ?>
                         <div class="caption">

@@ -51,6 +51,21 @@ class IzdelekDB extends AbstractDB
             . " WHERE i.aktivno = 1");
     }
 
+    public static function iskanje(array $params)
+    {
+//SELECT * FROM articles WHERE MATCH (title,body)
+//-> AGAINST ('+MySQL -YourSQL' IN BOOLEAN MODE);
+        $i = $params["iskanje"];
+        return parent::query("SELECT i.idIzdelek, i.ime, i.opis, i.cena, i.aktivno, AVG(o.ocena) AS avg_ocena, "
+            . "COUNT(o.ocena) AS count_ocena"
+            . " FROM Izdelek i  LEFT JOIN OcenaIzdelka o"
+            . " ON i.idIzdelek = o.idIzdelek  WHERE i.aktivno=1 AND i.idIzdelek IN"
+            . " (SELECT idIzdelek FROM Izdelek WHERE MATCH (ime,opis) AGAINST ('".$i."' IN BOOLEAN MODE))"
+            . "GROUP BY i.idIzdelek", $params);
+
+
+    }
+
     public static function getRest(array $params)
     {
         $izdelki = parent::query("SELECT i.idIzdelek, i.ime, i.opis, i.cena, AVG(o.ocena) AS avg_ocena, "

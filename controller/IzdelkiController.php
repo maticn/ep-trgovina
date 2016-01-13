@@ -12,6 +12,18 @@ class IzdelkiController
     {
         $data = filter_input_array(INPUT_GET);
 
+        if ($_SERVER["REQUEST_METHOD"] == "POST"){
+            // Iskanje
+            $search = filter_input_array(INPUT_POST);
+            $izdelki = IzdelekDB::iskanje($search);
+            foreach ($izdelki as &$izdelek) {
+                $izdelek["slike"] = SlikaIzdelkaDB::get($izdelek);
+            }
+            echo ViewHelper::render("view/izdelek-list.php", [
+                "izdelki" => $izdelki
+            ]);
+        }
+
 
         if ($data["id"]) {
             $izdelek = IzdelekDB::get($data);
