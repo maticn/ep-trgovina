@@ -11,13 +11,14 @@ var dodajVKosarico = function (cartUrl, izdelekId) {
                 showHideTransition: 'slide',
                 icon: 'info'
             })
-        }).fail(function () {
+        }).fail(function (response) {
         $.toast({
             heading: 'Error',
             text: 'Napaka!',
             showHideTransition: 'slide',
             icon: 'error'
-        })
+        });
+        console.log(response)
     })
 };
 var povecajKolicino = function (cartUrl, izdelekId) {

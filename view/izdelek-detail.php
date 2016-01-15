@@ -69,6 +69,7 @@
                         <div class="btn-group pull-right" role="group">
                             <a class="btn btn-default disabled"><?= $izdelek["cena"] ?> €</a>
                             <button type="button" class="btn btn-success"
+                                    <?= isset($_SESSION["idUporabnik"])?"":"disabled"?>
                                     onclick="dodajVKosarico('<?= BASE_URL."cart/ajax" ?>',<?= $izdelek["idIzdelek"]?>)">Dodaj v košarico</button>
                         </div>
                         <h2><?= $izdelek["ime"] ?>

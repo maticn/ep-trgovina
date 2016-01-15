@@ -47,6 +47,7 @@ class IzdelkiController
     {
         if (!isset($_SESSION["idUporabnik"])) {
             header("Location:" . BASE_URL . "login");
+            exit;
         }
         $validationRules = [
             'id' => [
@@ -87,6 +88,10 @@ class IzdelkiController
 
     public static function add()
     {
+        if (!isset($_SESSION["idUporabnik"])) {
+            header("Location:" . BASE_URL . "login");
+            exit;
+        }
         $form = new BooksInsertForm("add_form");
 
         if ($form->isSubmitted() && $form->validate()) {
@@ -102,6 +107,10 @@ class IzdelkiController
 
     public static function edit()
     {
+        if (!isset($_SESSION["idUporabnik"])) {
+            header("Location:" . BASE_URL . "login");
+            exit;
+        }
         $editForm = new BooksEditForm("edit_form");
         $deleteForm = new BooksDeleteForm("delete_form");
 
@@ -141,25 +150,6 @@ class IzdelkiController
             } else {
                 throw new InvalidArgumentException("editing nonexistent entry");
             }
-        }
-    }
-
-    public static function delete()
-    {
-        $form = new BooksDeleteForm("delete_form");
-        $data = $form->getValue();
-
-        if ($form->isSubmitted() && $form->validate()) {
-            BookDB::delete($data);
-            ViewHelper::redirect(BASE_URL . "books");
-        } else {
-            if (isset($data["id"])) {
-                $url = BASE_URL . "books/edit?id=" . $data["id"];
-            } else {
-                $url = BASE_URL . "books";
-            }
-
-            ViewHelper::redirect($url);
         }
     }
 

@@ -9,6 +9,15 @@ class ProductPanelController
 
     public static function panel()
     {
+        if (!isset($_SESSION["idUporabnik"])) {
+            header("Location:" . BASE_URL . "login");
+            exit;
+        }
+        if ($_SESSION["idVloga"] == 3) {
+            header('HTTP/1.1 401 Unauthorized', true, 401);
+            echo "401 Unauthorized";
+            exit;
+        }
         $izdelki = IzdelekDB::getAll();
         foreach ($izdelki as &$izdelek) {
             $izdelek["slike"] = SlikaIzdelkaDB::get($izdelek);
@@ -21,6 +30,15 @@ class ProductPanelController
 
     public static function add()
     {
+        if (!isset($_SESSION["idUporabnik"])) {
+            header("Location:" . BASE_URL . "login");
+            exit;
+        }
+        if ($_SESSION["idVloga"] == 3) {
+            header('HTTP/1.1 401 Unauthorized', true, 401);
+            echo "401 Unauthorized";
+            exit;
+        }
         $form = new IzdelekInsertForm("add_form");
 
         if ($form->isSubmitted() && $form->validate()) {
@@ -38,6 +56,15 @@ class ProductPanelController
 
     public static function edit()
     {
+        if (!isset($_SESSION["idUporabnik"])) {
+            header("Location:" . BASE_URL . "login");
+            exit;
+        }
+        if ($_SESSION["idVloga"] == 3) {
+            header('HTTP/1.1 401 Unauthorized', true, 401);
+            echo "401 Unauthorized";
+            exit;
+        }
         $editForm = new IzdelekEditForm("edit_form");
         $rules = [
             "id" => [
@@ -79,23 +106,5 @@ class ProductPanelController
         }
     }
 
-    public static function delete()
-    {
-        $form = new BooksDeleteForm("delete_form");
-        $data = $form->getValue();
-
-        if ($form->isSubmitted() && $form->validate()) {
-            BookDB::delete($data);
-            ViewHelper::redirect(BASE_URL . "books");
-        } else {
-            if (isset($data["id"])) {
-                $url = BASE_URL . "books/edit?id=" . $data["id"];
-            } else {
-                $url = BASE_URL . "books";
-            }
-
-            ViewHelper::redirect($url);
-        }
-    }
 
 }

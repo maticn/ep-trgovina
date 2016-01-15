@@ -16,6 +16,7 @@ class NarocilaController
     {
         if (!isset($_SESSION["idUporabnik"])) {
             header("Location:" . BASE_URL . "login");
+            exit;
         }
         if ($_SESSION["idVloga"] == 3){ // Stranka vidi samo svoja naročila
             $narocila = NarociloDB::getForStranka(["idStranke" => $_SESSION["idUporabnik"]]);
@@ -35,6 +36,11 @@ class NarocilaController
 
     public static function akcije()
     {
+        if (!isset($_SESSION["idUporabnik"])) {
+            header("Location:" . BASE_URL . "login");
+            exit;
+        }
+
         $validationRules = [
             'do' => [
                 'filter' => FILTER_VALIDATE_REGEXP,

@@ -23,6 +23,10 @@ class CartController
 
     public static function index()
     {
+        if (!isset($_SESSION["idUporabnik"])) {
+            header("Location:" . BASE_URL . "login");
+            exit;
+        }
         $izdelki = [];
         if (isset($_SESSION["cart"])) {
             $vozick = $_SESSION["cart"];
@@ -36,6 +40,11 @@ class CartController
 
     public static function ajax()
     {
+        if (!isset($_SESSION["idUporabnik"])) {
+            header('HTTP/1.1 401 Unauthorized', true, 401);
+            exit;
+        }
+
         $validationRules = [
             'do' => [
                 'filter' => FILTER_VALIDATE_REGEXP,
@@ -104,7 +113,6 @@ class CartController
 
     public static function oddajNarocilo()
     {
-        // TODO
         if (!isset($_SESSION["idUporabnik"])) {
             header("Location:store");
             exit;

@@ -5,6 +5,15 @@ class SlikaController
 {
     public static function controller()
     {
+        if (!isset($_SESSION["idUporabnik"])) {
+            header("Location:" . BASE_URL . "login");
+            exit;
+        }
+        if ($_SESSION["idVloga"] == 3) {
+            header('HTTP/1.1 401 Unauthorized', true, 401);
+            echo "401 Unauthorized";
+            exit;
+        }
         $validationRules = ['do' =>
             [
                 'filter' => FILTER_VALIDATE_REGEXP,
