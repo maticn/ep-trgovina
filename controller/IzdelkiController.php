@@ -14,7 +14,8 @@ class IzdelkiController
 
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
             // Iskanje
-            $search = filter_input_array(INPUT_POST);
+            //$search = filter_input_array(INPUT_POST);
+            $search = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
             $izdelki = IzdelekDB::iskanje($search);
             foreach ($izdelki as &$izdelek) {
                 $izdelek["slike"] = SlikaIzdelkaDB::get($izdelek);
