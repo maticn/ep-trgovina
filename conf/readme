@@ -8,3 +8,12 @@ Login details
 
 Gesla za uvoz certifikatov
 ep
+
+
+Iskanje po izdelkih - posodobitev sql-a
+najprej posodobi mysql
+
+sudo apt-get install mysql-server-5.6 mysql-client-5.6 mysql-client-core-5.6
+
+Dodamo FULLTEXT indeks
+ALTER TABLE Izdelek ADD FULLTEXT(ime,opis);
